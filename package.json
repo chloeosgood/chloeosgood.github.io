@@ -1,0 +1,22 @@
+{
+  "name": "software2-project",
+  "version": "0.0.1",
+  "description": "Software 2 project ",
+  "main": "app/app.js",
+  "scripts": {
+    "start": "nodemon app/app.js"
+  },
+  "author": "Matthew Hendrick",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "mdb": "^0.1.0",
+    "mongodb": "^3.1.6",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.4",
+    "reload": "^2.3.1"
+  }
+}
