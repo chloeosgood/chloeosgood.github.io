@@ -12,6 +12,7 @@ app.set('views',"app/views");
 app.use(express.static('app/public'));
 app.use(require('./routes/index'));
 app.use(require('./routes/thread'));
+app.use(require('./routes/login'));
 
 
 var server = app.listen(5656, function(){
