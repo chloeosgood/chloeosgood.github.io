@@ -15,7 +15,7 @@ router.get('/Thread', function(req, res){
 router.get('/Thread', function(req, res){
     
     var uri = "mongodb+srv://forum-admin:flyingmongooses@forum-cluster-main-pnxfd.mongodb.net/test?retryWrites=true";
-    var thread = {tname: 'Sample Thread'} //thread name goes here
+    var thread = {tname: 'Sample Thread'} //thread name goes  here
     
     //this should display thread along with sub collection of posts when finished
     MongoClient.connect(uri, function(err, client){

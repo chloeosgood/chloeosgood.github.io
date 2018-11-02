@@ -14,7 +14,7 @@ router.post('/testInsertUser', function(req, res, next){
         scname: TODO,
         psw: TODO, 
         email: TODO,
-        isAdmin: 0      //isAdmin set to 0 by default (not admin)
+        isAdmin: 0      //isAdmin set to 0 by default(not admin)
     };
     
     MongoClient.connect(uri, function(err, client) {
