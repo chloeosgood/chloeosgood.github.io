@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var assert = require('assert');
 var MongoClient = require('mongodb').MongoClient;
+var bodyParser = require('body-parser');
 
 var uri = "mongodb+srv://forum-admin:flyingmongooses@forum-cluster-main-pnxfd.mongodb.net/test?retryWrites=true";
 
