@@ -303,6 +303,13 @@ h6 {
   background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);
 }
 
+.bg-gra-04 {
+    background: -webkit-gradient(linear, left bottom, right top, from(#00B2A9), to(#E43C40));
+    background: -webkit-linear-gradient(bottom left, #00B2A9 0%, #E43C40 100%);
+    background: -moz-linear-gradient(bottom left, #00B2A9 0%, #E43C40 100%);
+    background: -o-linear-gradient(bottom left, #00B2A9 0%, #E43C40 100%);
+    background: linear-gradient(to top right, #00B2A9 0%, #E43C40 100%);
+}
 .bg-gra-03 {
   background: -webkit-gradient(linear, left bottom, right top, from(#08aeea), to(#b721ff));
   background: -webkit-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
@@ -310,6 +317,7 @@ h6 {
   background: -o-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
   background: linear-gradient(to top right, #08aeea 0%, #b721ff 100%);
 }
+
 
 /* ==========================================================================
    #SPACING
@@ -427,11 +435,12 @@ h6 {
 }
 
 .btn--green {
-  background: #57b846;
+  background: #E43C40;
+    
 }
 
 .btn--green:hover {
-  background: #4dae3c;
+  background: #00B2A9;
 }
 
 .btn--blue {
