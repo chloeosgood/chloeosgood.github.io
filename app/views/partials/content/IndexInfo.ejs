@@ -1,6 +1,8 @@
 <div class = "col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-2 main">
     <div class = "panel panel-default">
-        <div class = "panel-heading">A basic Panel</div> 
-        <div class = "panel-body">this is a test</div>
+        <%for(i=0;i<5;i++){%>
+        <div class = "panel-heading"><%=UserID%></div> 
+        <div class = "panel-body"><%=UserName%></div>
+        <%}%>
     </div>
 </div>
