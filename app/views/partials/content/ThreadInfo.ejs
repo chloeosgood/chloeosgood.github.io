@@ -1,2 +1,280 @@
-<!--This is where the Thread info will go Sean you will create this code for what will be shown when a thread is clicked on-->
-<h1>mr pooopy butthole</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+i:hover{
+  color: lightgray;
+}
+
+i.button{
+  
+}
+
+h4:hover{
+  color: lightgray;
+}
+
+img:hover{
+  color: lightgray;
+}
+i:active {
+  color: #00B2A9;
+  shadow: 0 5px #666;
+  
+  
+}
+h4:active {
+  color: #00B2A9;
+  shadow: 0 5px #666;
+  
+}
+
+i{
+  color: white;
+  padding-right: 15px;
+}
+div.Post{
+  display: table-cell;
+  width = 10%;
+ 
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px;
+  border-radius: 25px 25px 25px 25px;
+  backgroud: #D3D3D3;
+  width: 90%;
+  height: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-decoration: none;
+ }
+div.Content{
+  display: table;
+  width = 100%;
+  table-layout: fixed;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 25px 25px 25px 25px;
+  backgroud: #D3D3D3;
+  width: 100%;
+  height: 500px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-decoration: none;
+}
+div.Spacer{
+  display: table;
+  width = 100%;
+  table-layout: fixed;
+  background-color: #00B2A9;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px;
+  border-radius: 25px 25px 1px 1px;
+  backgroud: #D3D3D3;
+  width: 100%;
+  height: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-decoration: none;
+  
+}
+
+div.PostFooter{
+  display: table;
+  width = 100%;
+  table-layout: fixed;
+  background-color: #E43C40;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 25px 25px 25px 25px;
+  backgroud: #D3D3D3;
+  width: 100%;
+  height: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-decoration: none;
+  text-align: center;
+}
+div.CommentData{
+  display: table-cell;
+  width = 100%;
+  table-layout: fixed;
+  background-color: #E43C40;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 25px 25px 25px 25px;
+  backgroud: #D3D3D3;
+  width: 100%;
+  height: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-decoration: none;
+}
+div.Body{
+  display-horizontal: table-cell;
+  width: 100%;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px;
+  border-top-width: 2px;
+  border-radius: 1px 1px 25px 25px;
+ 
+  box-shadow: none;
+
+}
+div.Comment{
+  display: table;
+  width = 100%;
+  table-layout: fixed;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 1px 1px 25px 25px;
+  backgroud: #D3D3D3;
+  width: 100%;
+  height: 35px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-decoration: none;
+}
+div.Left{ 
+  width: 3%;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px;
+  border-radius: 25px 25px 25px 25px;
+  border-bottom-width: 0px;
+  box-shadow: none;
+  text-align: center;
+}
+div.Right{ 
+  width: 50%;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px;
+  border-radius: 25px 25px 25px 25px;
+  border-bottom-width: 0px;
+  box-shadow: none;
+  text-height: middle;
+  text-align: left;
+  box-shadow: none;
+  
+}
+
+div.DataRight{ 
+  width: 10%;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 25px 25px 25px 25px;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  box-shadow: none;
+  text-height: middle;
+  text-align: center;
+  box-shadow: none;
+  
+}
+img.Profile{
+  border-radius: 50%;
+  height:30px;
+  width:30px;
+  
+}
+body.main-body{
+	background-color: black;
+}
+body {
+    background-color: white;
+}
+
+h4 {
+	font-family: sans-serif;
+    color: black;
+    text-align: left;
+}
+
+p {
+    font-family: sans-serif;
+    font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+<div class = "Content">
+  <div class = "Post">
+    <div class = "Post Left">
+      
+      <img class = "Profile" src = "https://www.w3schools.com/images/w3schools_green.jpg">
+      <h4>Thread</h4>
+    </div>
+    
+    <div class = "Post Left">
+      <h4>User</h4>
+      
+    </div>
+    <div class = "Post Right">
+      <h4>User Tag</h4>
+    </div>
+  <div class = "Content Body">
+    <p>This sucks.</p>
+  
+  </div>
+</div>
+
+</div>
+
+<div class = "PostFooter">
+  
+  <i class="fa fa-heart"></i>
+  <i class="fa fa-trash-o"></i>
+  <i class="fa fa-flag-o"></i>
+  <i class="fa fa-share-alt"></i> 
+  <i class="fa fa-send-o"></i> 
+  
+</div>
+
+<div class = "Spacer">
+  <h4>Comments <i class="fa fa-angle-down"></i> </h4>
+   
+</div>
+
+<div class = "Comment">
+  <div class = "Post">
+    <div class = "Post Left">
+      
+      <h4>User</h4>
+      
+    </div>
+    
+   
+   
+  <div class = "Comment Body">
+    <p>This sucks.</p>
+    <div class = "PostFooter">
+      <i class="fa fa-heart"></i>
+      <i class="fa fa-trash-o"></i>
+		
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+</body>
