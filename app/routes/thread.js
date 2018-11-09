@@ -6,7 +6,8 @@ router.get('/Thread', function (req, res) {
         res.render('Thread', {
             pageTitle: "Thread",
             pageID: "Thread Page",
-            Location: "../"
+            Location: "../",
+            Username: req.session.user
         })
     } else
         res.redirect('/login');
