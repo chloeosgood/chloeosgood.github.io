@@ -1,25 +1,33 @@
 <link href="dist/css/indexinfo.css" rel="stylesheet" media="all">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="col-sm-7 col-sm-offset-2 col-md-7 col-md-offset-2 main">
-    <%for(i=0;i<5;i++){%>
-    <div class="Thread">
-        <div class="Thread-Info Left">
-            <h4>User</h4>
-            <img class="Profile" src="https://www.w3schools.com/images/w3schools_green.jpg">
-            <h4>User Tag</h4>
-        </div>
+<div class = "row testclass">
+    <div class="col-sm-9 col-md-9 main">
+        <%for(i=0;i<5;i++){%>
+        <div class="Thread">
+            <div class="Thread-Info Left">
+                <h4>User</h4>
+                <img class="Profile" src="https://www.w3schools.com/images/w3schools_green.jpg">
+                <h4>User Tag</h4>
+            </div>
 
-        <div class="Thread-Info Middle">
-            <h3>Thread Name</h3>
-            <h4>Thread Content</h4>
-        </div>
+            <div class="Thread-Info Middle">
+                <h3>Thread Name</h3>
+                <h4>Thread Content</h4>
+            </div>
 
-        <div class="Thread-Info Right">
-            <i class="fa fa-heart info"></i>
-            <i class="fa fa-trash-o info"></i>
+            <div class="Thread-Info Right">
+                <i class="fa fa-heart info"></i>
+                <i class="fa fa-trash-o info"></i>
+            </div>
+            <a href="#"></a>
         </div>
-        <a href="#"></a>
+        <%}%>
+
     </div>
-    <%}%>
-
 </div>
+
+<style>
+    div.testclass{
+        margin-top: 75px;
+    }
+</style>

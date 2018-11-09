@@ -225,7 +225,7 @@ iframe {
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: linear-gradient(229deg, #E43C40, #00B2A9);
+    background: linear-gradient(0deg, #E43C40, #00B2A9);
     animation: AnimationName 15s ease infinite;
 }
 
