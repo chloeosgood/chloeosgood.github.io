@@ -26,6 +26,7 @@ app.use(express.static('app/public'));
 app.use(require('./routes/index'));
 app.use(require('./routes/thread'));
 app.use(require('./routes/login'));
+app.use(require('./routes/SignUp'));
 
 
 var server = app.listen(5656, function(){

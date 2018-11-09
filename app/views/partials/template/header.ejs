@@ -1,1 +1,69 @@
 <!--This is where the header template will go. Chloe this is where all of your code will go.-->
+
+<style>
+	.sidebar {
+		position: fixed;
+		top: 51px;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		padding: 20px;
+		overflow-x: hidden;
+		overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+		background-color: #f5f5f5;
+		border-right: 1px solid #eee;
+	}
+	.sidebar {
+    	width: 180px;
+	}
+
+	@media (min-width: 768px) {
+    	.main {
+        	padding-right: 40px;
+        	padding-left: 220px; /* 180 + 40 */
+    	}
+	}
+    i3{
+        color:black;
+    }
+</style>
+
+<nav class ="navbar navbar-inverse navbar-fixed-top">
+	<div class= "container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Flying Mongooses</a>
+		</div>
+		<ul class= "nav navbar-nav">
+			<li class="active"><a href="/">Home</a></li>
+		</ul>
+		<form class="navbar-form navbar-left" action="action_page.php">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Search">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit">
+						<i3 class="glyphicon glyphicon-search"></i3>
+					</button>
+				</div>
+			</div>
+		</form>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="#"><span class="glyphicon glyphicon-user"></span> <%=Username%></a></li>
+		</ul>
+	</div>
+</nav>
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-sm-2 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Recent Posts</a></li>
+                <div class="well">
+      				<p>ADS</p>
+      			</div>
+      			<div class="well">
+        			<p>ADS</p>
+      			</div>
+            </ul>
+        </div>
+    </div>
+</div>
