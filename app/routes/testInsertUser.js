@@ -18,7 +18,7 @@ router.get('/test', function(req, res){
                        if(err) throw err;
                         console.log(result);
                         client.close();
-                    });
+                    };
                 });
     res.render('Login',{
         pageTitle: "Login",

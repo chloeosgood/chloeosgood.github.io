@@ -78,13 +78,13 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="password" id = "password" name="password_1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"  title = "Must contain at least one number, one uppercase and lowercase letter, a special character, and at least 8 or more characters" required> 
+                                            <input class="input--style-5" type="password" id="password" name="password_1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Must contain at least one number, one uppercase and lowercase letter, a special character, and at least 8 or more characters" required>
                                             <label class="label--desc">Password</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="password" id="password_2" name="password_2" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title = "Must contain at least one number, one uppercase and lowercase letter, a special character, and at least 8 or more characters" required>
+                                            <input class="input--style-5" type="password" id="password_2" name="password_2" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Must contain at least one number, one uppercase and lowercase letter, a special character, and at least 8 or more characters" required>
                                             <label class="label--desc">Repeat Password</label>
                                         </div>
                                     </div>
@@ -94,28 +94,40 @@
                         <div class="form-row">
                             <div class="name"></div>
                             <div class="value">
-                                <div class="input-group">
-                                    <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="classification" required>
-                                            <option value = "">Choose option</option>
-                                            <option value = "Freshman">Freshman</option>
-                                            <option value = "Sophomore">Sophomore</option>
-                                            <option value = "Junior">Junior</option>
-                                            <option value = "Senior">Senior</option>
-                                            <option value = "Graduate">Graduate</option>
-                                            <option value = "Second Degree">Second Degree</option>
-                                        </select>
-                                        <div class="select-dropdown"></div>
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="major" required>
+                                            <label class="label--desc">Major</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="input-group">
+                                            <div class="rs-select2 js-select-simple select--no-search">
+                                                <select name="classification" required>
+                                                    <option value="">Classification</option>
+                                                    <option value="Freshman">Freshman</option>
+                                                    <option value="Sophomore">Sophomore</option>
+                                                    <option value="Junior">Junior</option>
+                                                    <option value="Senior">Senior</option>
+                                                    <option value="Graduate">Graduate</option>
+                                                    <option value="Second Degree">Second Degree</option>
+                                                </select>
+                                                <div class="select-dropdown"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class ="form-row">
+                        <div class="form-row">
                             <div class="btn--center"></div>
                             <button class="btn btn--radius-2 btn--green" type="submit">Register</button>
                         </div>
-                            <div class="btn--center btn--red"><%=error%></div>
-                        
+                        <div class="btn--center btn--red">
+                            <%=error%>
+                        </div>
+
                     </form>
                 </div>
             </div>

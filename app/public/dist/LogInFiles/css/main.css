@@ -200,9 +200,11 @@ iframe {
     color: #E43C40;
     line-height: 1.5;
 }
-.txt2:hover{
-    color:#00B2A9;
+
+.txt2:hover {
+    color: #00B2A9;
 }
+
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 
@@ -223,12 +225,115 @@ iframe {
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: -webkit-gradient(linear, left bottom, right top, from(#00B2A9), to(#E43C40));
-    background: -webkit-linear-gradient(bottom left, #00B2A9 0%, #E43C40 100%);
-    background: -moz-linear-gradient(bottom left, #00B2A9 0%, #E43C40 100%);
-    background: -o-linear-gradient(bottom left, #00B2A9 0%, #E43C40 100%);
-    background: linear-gradient(to top right, #00B2A9 0%, #E43C40 100%);
+    background: linear-gradient(229deg, #E43C40, #00B2A9);
+    animation: AnimationName 15s ease infinite;
 }
+
+@keyframes AnimationName {
+    0%{background: linear-gradient(0deg, #E43C40, #00B2A9);}
+1%{background: linear-gradient(5deg, #E43C40, #00B2A9);}
+2%{background: linear-gradient(9deg, #E43C40, #00B2A9);}
+3%{background: linear-gradient(12deg, #E43C40, #00B2A9);}
+4%{background: linear-gradient(16deg, #E43C40, #00B2A9);}
+5%{background: linear-gradient(19deg, #E43C40, #00B2A9);}
+6%{background: linear-gradient(23deg, #E43C40, #00B2A9);}
+7%{background: linear-gradient(26deg, #E43C40, #00B2A9);}
+8%{background: linear-gradient(30deg, #E43C40, #00B2A9);}
+9%{background: linear-gradient(33deg, #E43C40, #00B2A9);}
+10%{background: linear-gradient(37deg, #E43C40, #00B2A9);}
+11%{background: linear-gradient(40deg, #E43C40, #00B2A9);}
+12%{background: linear-gradient(44deg, #E43C40, #00B2A9);}
+13%{background: linear-gradient(47deg, #E43C40, #00B2A9);}
+14%{background: linear-gradient(51deg, #E43C40, #00B2A9);}
+15%{background: linear-gradient(54deg, #E43C40, #00B2A9);}
+16%{background: linear-gradient(59deg, #E43C40, #00B2A9);}
+17%{background: linear-gradient(62deg, #E43C40, #00B2A9);}
+18%{background: linear-gradient(66deg, #E43C40, #00B2A9);}
+19%{background: linear-gradient(69deg, #E43C40, #00B2A9);}
+20%{background: linear-gradient(73deg, #E43C40, #00B2A9);}
+21%{background: linear-gradient(76deg, #E43C40, #00B2A9);}
+22%{background: linear-gradient(80deg, #E43C40, #00B2A9);}
+23%{background: linear-gradient(83deg, #E43C40, #00B2A9);}
+24%{background: linear-gradient(87deg, #E43C40, #00B2A9);}
+25%{background: linear-gradient(90deg, #E43C40, #00B2A9);}
+26%{background: linear-gradient(94deg, #E43C40, #00B2A9);}
+27%{background: linear-gradient(97deg, #E43C40, #00B2A9);}
+28%{background: linear-gradient(101deg, #E43C40, #00B2A9);}
+29%{background: linear-gradient(104deg, #E43C40, #00B2A9);}
+30%{background: linear-gradient(108deg, #E43C40, #00B2A9);}
+31%{background: linear-gradient(113deg, #E43C40, #00B2A9);}
+32%{background: linear-gradient(117deg, #E43C40, #00B2A9);}
+33%{background: linear-gradient(120deg, #E43C40, #00B2A9);}
+34%{background: linear-gradient(124deg, #E43C40, #00B2A9);}
+35%{background: linear-gradient(127deg, #E43C40, #00B2A9);}
+36%{background: linear-gradient(131deg, #E43C40, #00B2A9);}
+37%{background: linear-gradient(134deg, #E43C40, #00B2A9);}
+38%{background: linear-gradient(138deg, #E43C40, #00B2A9);}
+39%{background: linear-gradient(141deg, #E43C40, #00B2A9);}
+40%{background: linear-gradient(145deg, #E43C40, #00B2A9);}
+41%{background: linear-gradient(148deg, #E43C40, #00B2A9);}
+42%{background: linear-gradient(152deg, #E43C40, #00B2A9);}
+43%{background: linear-gradient(155deg, #E43C40, #00B2A9);}
+44%{background: linear-gradient(159deg, #E43C40, #00B2A9);}
+45%{background: linear-gradient(162deg, #E43C40, #00B2A9);}
+46%{background: linear-gradient(167deg, #E43C40, #00B2A9);}
+47%{background: linear-gradient(170deg, #E43C40, #00B2A9);}
+48%{background: linear-gradient(174deg, #E43C40, #00B2A9);}
+49%{background: linear-gradient(177deg, #E43C40, #00B2A9);}
+50%{background: linear-gradient(181deg, #E43C40, #00B2A9);}
+51%{background: linear-gradient(184deg, #E43C40, #00B2A9);}
+52%{background: linear-gradient(188deg, #E43C40, #00B2A9);}
+53%{background: linear-gradient(191deg, #E43C40, #00B2A9);}
+54%{background: linear-gradient(195deg, #E43C40, #00B2A9);}
+55%{background: linear-gradient(198deg, #E43C40, #00B2A9);}
+56%{background: linear-gradient(202deg, #E43C40, #00B2A9);}
+57%{background: linear-gradient(205deg, #E43C40, #00B2A9);}
+58%{background: linear-gradient(209deg, #E43C40, #00B2A9);}
+59%{background: linear-gradient(212deg, #E43C40, #00B2A9);}
+60%{background: linear-gradient(216deg, #E43C40, #00B2A9);}
+61%{background: linear-gradient(221deg, #E43C40, #00B2A9);}
+62%{background: linear-gradient(225deg, #E43C40, #00B2A9);}
+63%{background: linear-gradient(228deg, #E43C40, #00B2A9);}
+64%{background: linear-gradient(232deg, #E43C40, #00B2A9);}
+65%{background: linear-gradient(235deg, #E43C40, #00B2A9);}
+66%{background: linear-gradient(239deg, #E43C40, #00B2A9);}
+67%{background: linear-gradient(242deg, #E43C40, #00B2A9);}
+68%{background: linear-gradient(246deg, #E43C40, #00B2A9);}
+69%{background: linear-gradient(249deg, #E43C40, #00B2A9);}
+70%{background: linear-gradient(253deg, #E43C40, #00B2A9);}
+71%{background: linear-gradient(256deg, #E43C40, #00B2A9);}
+72%{background: linear-gradient(260deg, #E43C40, #00B2A9);}
+73%{background: linear-gradient(263deg, #E43C40, #00B2A9);}
+74%{background: linear-gradient(267deg, #E43C40, #00B2A9);}
+75%{background: linear-gradient(270deg, #E43C40, #00B2A9);}
+76%{background: linear-gradient(275deg, #E43C40, #00B2A9);}
+77%{background: linear-gradient(278deg, #E43C40, #00B2A9);}
+78%{background: linear-gradient(282deg, #E43C40, #00B2A9);}
+79%{background: linear-gradient(285deg, #E43C40, #00B2A9);}
+80%{background: linear-gradient(289deg, #E43C40, #00B2A9);}
+81%{background: linear-gradient(292deg, #E43C40, #00B2A9);}
+82%{background: linear-gradient(296deg, #E43C40, #00B2A9);}
+83%{background: linear-gradient(299deg, #E43C40, #00B2A9);}
+84%{background: linear-gradient(303deg, #E43C40, #00B2A9);}
+85%{background: linear-gradient(306deg, #E43C40, #00B2A9);}
+86%{background: linear-gradient(310deg, #E43C40, #00B2A9);}
+87%{background: linear-gradient(313deg, #E43C40, #00B2A9);}
+88%{background: linear-gradient(317deg, #E43C40, #00B2A9);}
+89%{background: linear-gradient(320deg, #E43C40, #00B2A9);}
+90%{background: linear-gradient(324deg, #E43C40, #00B2A9);}
+91%{background: linear-gradient(329deg, #E43C40, #00B2A9);}
+92%{background: linear-gradient(333deg, #E43C40, #00B2A9);}
+93%{background: linear-gradient(336deg, #E43C40, #00B2A9);}
+94%{background: linear-gradient(340deg, #E43C40, #00B2A9);}
+95%{background: linear-gradient(343deg, #E43C40, #00B2A9);}
+96%{background: linear-gradient(347deg, #E43C40, #00B2A9);}
+97%{background: linear-gradient(350deg, #E43C40, #00B2A9);}
+98%{background: linear-gradient(354deg, #E43C40, #00B2A9);}
+99%{background: linear-gradient(357deg, #E43C40, #00B2A9);}
+100%{background: linear-gradient(360deg, #E43C40, #00B2A9);}
+}
+
+
 
 .wrap-login100 {
     width: 390px;
@@ -295,7 +400,7 @@ iframe {
     top: 0;
     left: 0;
     pointer-events: none;
-    color:black;
+    color: black;
 }
 
 .focus-input100::before {

@@ -37,16 +37,13 @@ router.post('/SignUp', function (req, res) {
 
             // perform actions on the collection object
             client.db("forum").collection("user").find({
-                $or: [{
-                    uname: req.body.username
-            }, {
-                    email: req.body.email
-            }]
+                uname: req.body.username
+
             }).toArray(function (err, result) {
                 if (err) throw err;
                 console.log(result)
                 if (result.length == 1) {
-                    res.render('SignUp', {
+                    return res.render('SignUp', {
                         pageTitle: "SignUp",
                         pageID: "SignUp",
                         Location: "../",
@@ -54,7 +51,45 @@ router.post('/SignUp', function (req, res) {
                     })
                 }
             });
+
+            client.db("forum").collection("user").find({
+                email: req.body.email
+
+            }).toArray(function (err, result) {
+                if (err) throw err;
+                console.log(result)
+                if (result.length == 1) {
+                    return res.render('SignUp', {
+                        pageTitle: "SignUp",
+                        pageID: "SignUp",
+                        Location: "../",
+                        error: '*Email already Exists*'
+                    })
+                }
+            });
+
+            var sname = req.body.first_name + " " + req.body.last_name;
+            client.db("forum").collection("user").insertOne({
+                uname: req.body.username,
+                scname: sname,
+                psw: req.body.password_1,
+                email: req.body.email,
+                info: {
+                    major: req.body.major,
+                    class: req.body.classification
+                },
+                isAdmin: 0
+            });
+            
+            
+            
             client.close();
+            return res.render('login', {
+                        pageTitle: "login",
+                        pageID: "login",
+                        Location: "../",
+                        error: 'Account Created. Please Log in With New Account'
+                    })
         });
     }
 });
