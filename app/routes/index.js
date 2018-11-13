@@ -9,11 +9,9 @@ router.get('/', function (req, res) {
             Location: "../",
             Username: req.session.user
         });
-        console.log(req.session.user);
     } else {
         res.redirect('login');
     }
-
 });
 module.exports = router;
 //req.session.user
