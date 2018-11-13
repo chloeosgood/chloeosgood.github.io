@@ -28,14 +28,6 @@ router.post('/ForgotPassword', function (req, res) {
         subject: 'Validate Forgot Password',
         text: 'Sending a test email to validate password'
     };
-
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
     res.redirect('/ValidateResetPassword');
 
 });

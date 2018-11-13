@@ -538,7 +538,7 @@ input[type="date"i] {
    ========================================================================== */
 input {
     outline: none;
-    margin-left: 150px;
+    margin-left: 15px;
     border: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -659,7 +659,7 @@ input {
     display: block;
     color: #999;
     font-size: 14px;
-    margin-left: 150px;
+    margin-left: 15px;
     margin-top: 7px;
     left: 0;
 }
