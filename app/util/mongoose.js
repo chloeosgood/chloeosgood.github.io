@@ -4,14 +4,16 @@ const config = require('../config/default.js');
 
 // connect
 module.exports = () => {
-    mongoose.connect(config.uri, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
+    mongoose.connect(config.uri, { useFindAndModify: false, useCreateIndex: true });
     const db = mongoose.connection;
     db.on('error', function(err) {
-        console.log(err);
+      console.log('Connection Failed');
+      if (err) console.log(err);
     });
     db.once('open', function() {
-    // loadSample();
-    // testDb();
+      console.log('DB Opened');
+      // loadSample();
+      // testDb();
     });
 };
 
