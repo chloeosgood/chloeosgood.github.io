@@ -22,7 +22,7 @@ router.get('/Thread', function(req, res){
     MongoClient.connect(uri, function(err, client){
         if(err) throw err;
         client.db('forum').collection('thread').find(thread, function(err, result){
-            iff (err) throw err;
+            if (err) throw err;
             console.log(result.name);
             client.close();
         });
