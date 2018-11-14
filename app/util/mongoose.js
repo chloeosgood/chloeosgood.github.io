@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
+const config = require('../config/default.js');
+
 // connect
 module.exports = () => {
-    mongoose.connect(config.mongodb, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
+    mongoose.connect(config.uri, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
     const db = mongoose.connection;
     db.on('error', function(err) {
         console.log(err);
