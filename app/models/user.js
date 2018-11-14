@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema({
     name: {
       type: NameSchema,
     },
-    userName: {
+    username: {
       type: String,
       required: true,
       unique: true
@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
       minlength: 10,
       maxlength: 50
     },
-    hashed_password: {
+    password: {
       type: String,
       required: true,
       default: ''
@@ -61,9 +61,9 @@ UserSchema.path('name').validate(function(name) {
   return name.firstname.length && name.lastname.length;
 }, 'Name cannot be empty!');
 
-UserSchema.path('userName').validate(function(name) {
-  return userName.length;
-}, 'UserName cannot be empty!');
+UserSchema.path('username').validate(function(username) {
+  return username.length;
+}, 'Username cannot be empty!');
 
 UserSchema.path('email').validate(function(email) {
   return email.length;
