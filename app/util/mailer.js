@@ -8,8 +8,8 @@ module.exports.mailer = function(to, cb) {
         port: 465,
         secure: true,
         auth: {
-          user: 'feizhouttu@gmail.com',
-          pass: 'FZpmt@93'
+          user: '<from>',
+          pass: '<pass>'
         }
     });
 
