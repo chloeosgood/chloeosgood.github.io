@@ -1,29 +1,29 @@
 {
-  "name": "software2-project",
-  "version": "0.0.1",
-  "description": "Software 2 project ",
-  "main": "app/app.js",
-  "scripts": {
-    "start": "nodemon app/app.js"
-  },
-  "author": "Matthew Hendrick",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "bootstrap": "^3.3.7",
-    "connect": "^3.6.6",
-    "cookie-parser": "^1.4.3",
-    "ejs": "^2.6.1",
-    "express": "^4.16.3",
-    "express-session": "^1.15.6",
-    "mdb": "^0.1.0",
-    "mongodb": "^3.1.6",
-    "mongoose": "^5.3.10",
-    "multer": "^1.4.1",
-    "mysql": "^2.16.0",
-    "nodemailer": "^4.6.8",
-    "nodemon": "^1.18.4",
-    "reload": "^2.3.1",
-    "sequelize": "^4.41.0"
-  }
+    "name": "software2-project",
+    "version": "0.0.1",
+    "description": "Software 2 project ",
+    "main": "app/app.js",
+    "scripts": {
+        "start": "nodemon app/app.js"
+    },
+    "author": "Matthew Hendrick",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "bootstrap": "^3.3.7",
+        "connect": "^3.6.6",
+        "cookie-parser": "^1.4.3",
+        "ejs": "^2.6.1",
+        "express": "^4.16.3",
+        "express-session": "^1.15.6",
+        "mdb": "^0.1.0",
+        "mongodb": "^3.1.6",
+        "mongoose": "^5.3.10",
+        "multer": "^1.4.1",
+        "mysql": "^2.16.0",
+        "nodemailer": "^4.6.8",
+        "nodemon": "^1.18.4",
+        "reload": "^2.3.1",
+        "sequelize": "^4.41.0"
+    }
 }

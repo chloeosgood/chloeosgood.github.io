@@ -22,22 +22,22 @@ var transporter = nodeMailer.createTransport({
 });
 
 router.post('/ForgotPassword', function (req, res) {
-    var mailOptions = {
-        from: 'inkpotforumproject@gmail.com',
-        to: req.body.email,
-        subject: 'Validate Forgot Password',
-        text: 'Sending a test email to validate password'
-    };
-    res.redirect('/ValidateResetPassword');
+    if (req.body.Button == 'Reset') {
+        res.render('ValidateResetPassword', {
+            pageTitle: "Validate Reset Password",
+            pageID: "Validate Reset Page",
+            Location: "../"
+        });
+    } else if (req.body.Button == 'Validate') {
+        res.render('ChangePassword', {
+            pageTitle: "Change Password",
+            pageID: "Change Password Page",
+            Location: "../",
+            ConfirmOldPassword: 'True'
+        });
+    }
+
 
 });
 
-
-router.get('/validateResetPassword', function (req, res) {
-    res.render('ValidateResetPassword', {
-        pageTitle: "Validate Reset Password",
-        pageID: "Validate Reset Page",
-        Location: "../"
-    });
-});
 module.exports = router;
