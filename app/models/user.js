@@ -36,9 +36,8 @@ const UserSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    classfication: {    //TODO: this sets to Freshman every time!
+    classification: {    
       type: String,
-      enum: ['Freshman', 'Sophmore', 'Junior', 'Senior', 'Graduate', 'Second Degree'],
       default: 'Freshman' 
     },
     major: {

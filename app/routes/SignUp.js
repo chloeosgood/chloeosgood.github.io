@@ -29,21 +29,6 @@ router.post('/SignUp', function (req, res) {
             error: '*Passwords do not match*'
         })
     } else {
-        var addUser = new User({
-            name: [{
-                firstname: req.body.first_name
-            }, {
-                lastname: req.body.last_name
-            }],
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password_1,
-            classification: req.body.classification,
-            major: req.body.major,
-            //avatar: TODO,
-            authority: 0 //set to 0 by default
-        });
-
         //check username
         User.countDocuments({
             username: req.body.username
@@ -74,7 +59,7 @@ router.post('/SignUp', function (req, res) {
             }
         });
 
-    
+
         User.create({
             name: {
                 firstname: req.body.first_name,
@@ -90,12 +75,13 @@ router.post('/SignUp', function (req, res) {
         }, function (err, user) {
             //console.log(user)
             if (err) {
-                console.log('NOT WORK WHY');
                 console.log(err);
             } else {
                 console.log('User Registered');
+                console.log(req.body.classification);
             }
         });
+        
 
 
         return res.render('login', {
