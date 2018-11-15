@@ -34,13 +34,12 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
       type: String,
-      required: true,
-      default: ''
+      required: true
     },
-    classfication: {
+    classfication: {    //TODO: this sets to Freshman every time!
       type: String,
       enum: ['Freshman', 'Sophmore', 'Junior', 'Senior', 'Graduate', 'Second Degree'],
-      default: 'Freshman'
+      default: 'Freshman' 
     },
     major: {
       type: String,

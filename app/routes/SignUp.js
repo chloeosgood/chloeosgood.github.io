@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var MongoClient = require('mongodb');
+
+const User = require('../models/user.js');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({
@@ -28,69 +29,82 @@ router.post('/SignUp', function (req, res) {
             error: '*Passwords do not match*'
         })
     } else {
-        var uri = "mongodb+srv://forum-admin:flyingmongooses@forum-cluster-main-pnxfd.mongodb.net/test?retryWrites=true";
-        MongoClient.connect(uri, function (err, client) {
-            //error checking
-            if (err) {
-                console.log('Error occurred while connecting to MongoDB Atlas...\n', err);
-            }
-
-            // perform actions on the collection object
-            client.db("forum").collection("user").find({
-                uname: req.body.username
-
-            }).toArray(function (err, result) {
-                if (err) throw err;
-                console.log(result)
-                if (result.length == 1) {
-                    return res.render('SignUp', {
-                        pageTitle: "SignUp",
-                        pageID: "SignUp",
-                        Location: "../",
-                        error: '*Username already Exists*'
-                    })
-                }
-            });
-
-            client.db("forum").collection("user").find({
-                email: req.body.email
-
-            }).toArray(function (err, result) {
-                if (err) throw err;
-                console.log(result)
-                if (result.length == 1) {
-                    return res.render('SignUp', {
-                        pageTitle: "SignUp",
-                        pageID: "SignUp",
-                        Location: "../",
-                        error: '*Email already Exists*'
-                    })
-                }
-            });
-
-            var sname = req.body.first_name + " " + req.body.last_name;
-            client.db("forum").collection("user").insertOne({
-                uname: req.body.username,
-                scname: sname,
-                psw: req.body.password_1,
-                email: req.body.email,
-                info: {
-                    major: req.body.major,
-                    class: req.body.classification
-                },
-                isAdmin: 0
-            });
-            
-            
-            
-            client.close();
-            return res.render('login', {
-                        pageTitle: "login",
-                        pageID: "login",
-                        Location: "../",
-                        error: 'Account Created. Please Log in With New Account'
-                    })
+        var addUser = new User({
+            name: [{
+                firstname: req.body.first_name
+            }, {
+                lastname: req.body.last_name
+            }],
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password_1,
+            classification: req.body.classification,
+            major: req.body.major,
+            //avatar: TODO,
+            authority: 0 //set to 0 by default
         });
+
+        //check username
+        User.countDocuments({
+            username: req.body.username
+        }, function (err, count) {
+            if (count > 0) {
+                //uname exists
+                return res.render('SignUp', {
+                    pageTitle: "SignUp",
+                    pageID: "SignUp",
+                    Location: "../",
+                    error: '*Username already Exists*'
+                });
+            }
+        });
+
+        //check email exists
+        User.countDocuments({
+            email: req.body.email
+        }, function (err, count) {
+            if (count > 0) {
+                //email exists
+                return res.render('SignUp', {
+                    pageTitle: "SignUp",
+                    pageID: "SignUp",
+                    Location: "../",
+                    error: '*Email already Exists*'
+                });
+            }
+        });
+
+    
+        User.create({
+            name: {
+                firstname: req.body.first_name,
+                lastname: req.body.last_name,
+            },
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password_1,
+            classification: req.body.classification,
+            major: req.body.major,
+            avatar: '',
+            authority: 0 //set to 0 by default
+        }, function (err, user) {
+            //console.log(user)
+            if (err) {
+                console.log('NOT WORK WHY');
+                console.log(err);
+            } else {
+                console.log('User Registered');
+            }
+        });
+
+
+        return res.render('login', {
+            pageTitle: "login",
+            pageID: "login",
+            Location: "../",
+            error: 'Account Created. Please Log in With New Account'
+        })
+
     }
 });
 

@@ -5,6 +5,8 @@ var http = require('http');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
+
+
 var server = http.createServer();
 
 
@@ -22,14 +24,15 @@ app.use(session({
     }
 }));
 
+
 app.use(express.static('app/public'));
 app.use(require('./routes/index'));
 app.use(require('./routes/thread'));
-app.use(require('./routes/login'));
+app.use(require('./routes/Login'));
 app.use(require('./routes/SignUp'));
 app.use(require('./routes/ForgotPassword'));
 
-
+require('./util/mongoose.js')(); //adds mongoose connection
 
 var server = app.listen(5656, function(){
     console.log("Active");
