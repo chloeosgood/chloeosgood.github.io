@@ -33,7 +33,7 @@ router.post('/ForgotPassword', function (req, res) {
             pageTitle: "Change Password",
             pageID: "Change Password Page",
             Location: "../",
-            ConfirmOldPassword: 'True'
+            ConfirmOldPassword: 'False'
         });
     }
 
