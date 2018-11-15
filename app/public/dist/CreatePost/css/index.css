@@ -14,24 +14,20 @@
 	outline: none;
 }
 
-input[type=text], select {
-	
-	font-size: 15px;
-    width: 100%;
-    height: 420px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 0px;
-    background-color: white;
-    resize: none;
+.container{
+    margin-top: 90px;
+    margin-left: 200px;
+    
 }
 
+input[type="text"]{
+    height:30px;
+}
 
 #voiceBtn {
   width: 20px;
   color: transparent;
-  background-color: transparent;
+  background-color: white;
   transform: scale(2.0, 2.0);
   -webkit-transform: scale(2.0, 2.0);
   -moz-transform: scale(2.0, 2.0);
