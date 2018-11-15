@@ -28,6 +28,7 @@ app.use(require('./routes/thread'));
 app.use(require('./routes/login'));
 app.use(require('./routes/SignUp'));
 app.use(require('./routes/ForgotPassword'));
+app.use(require('./routes/CreatePost'));
 
 
 
