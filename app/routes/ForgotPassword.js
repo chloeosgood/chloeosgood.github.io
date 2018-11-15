@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var MongoClient = require('mongodb');
 var nodeMailer = require('nodemailer');
+
 
 router.get('/ForgotPassword', function (req, res) {
     res.render('ForgotPassword', {
@@ -35,6 +35,8 @@ router.post('/ForgotPassword', function (req, res) {
             Location: "../",
             ConfirmOldPassword: 'False'
         });
+        
+        
     }
 
 

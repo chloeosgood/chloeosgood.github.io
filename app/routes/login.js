@@ -22,22 +22,26 @@ module.exports = router;
 
 
 router.post('/login', function (req, res, next) {
-    User.find({username: req.body.username, password: req.body.pass}, function (err, result) {
-        if (err) throw err;
-        //console.log(result);
-        if (result.length == 0) {
-            res.render('Login', {
-                pageTitle: "Login",
-                pageID: "Log in",
-                Location: "../",
-                error: '*Username and password does not exist'
-            })
-        } else {
-            req.session.user = req.body.username;
-            //console.log(req.cookie);
-            res.redirect('/');
-        }
-    });
+    User.find({
+            username: req.body.username,
+            password: req.body.pass
+        },
+        function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            if (result.length == 0) {
+                res.render('Login', {
+                    pageTitle: "Login",
+                    pageID: "Log in",
+                    Location: "../",
+                    error: '*Username and password does not exist'
+                })
+            } else {
+                req.session.user = req.body.username;
+                //console.log(req.cookie);
+                res.redirect('/');
+            }
+        });
 });
 
 module.exports = router;
