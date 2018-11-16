@@ -13,6 +13,10 @@ router.get('/User', function (req, res) {
             classification: "classification"
         })
     } else
-        res.redirect('/login');
+        {
+            req.session.redirect = '/User';
+            res.redirect('/login');
+        }
+        
 });
 module.exports = router;

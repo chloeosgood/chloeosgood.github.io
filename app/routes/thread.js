@@ -10,6 +10,10 @@ router.get('/Thread', function (req, res) {
             Username: req.session.user
         })
     } else
-        res.redirect('/login');
+        {
+            req.session.redirect = '/Thread';
+           res.redirect('/login'); 
+        }
+        
 });
 module.exports = router;
