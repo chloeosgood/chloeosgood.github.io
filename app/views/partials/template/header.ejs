@@ -1,7 +1,7 @@
 <!--This is where the header template will go. Chloe this is where all of your code will go.-->
 
 <style>
-	.sidebar {
+    .sidebar {
 		position: fixed;
 		top: 51px;
 		bottom: 0;
@@ -27,42 +27,68 @@
     i3{
         color:black;
     }
+    .container-fluid
+    {
+        background:rgb(228,60,64,.6);
+    }
+    .navbar-inverse .navbar-brand ,
+    .navbar-inverse .navbar-nav > li > a,
+    .navbar-inverse .navbar-nav > .active > a
+    {
+        color:#00B2A9;
+        background:rgb(228,60,64,.1);
+        font-size:18px;
+        font-family:"Trattatello";
+    }
+    .navbar-inverse .navbar-brand:hover{
+        color:#00B2A9;
+    }
+    .navbar-inverse .navbar-nav > .active > a:hover{
+        color:rgb(228,60,64);
+        background:#00B2A9;
+    }
+    .navbar-inverse {
+    background-color: rgb(228,60,64,.6);
+    border-color: #FFFFFF;
+}
 </style>
 
-<nav class ="navbar navbar-inverse navbar-fixed-top">
-	<div class= "container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">Ink Pot</a>
-		</div>
-		<ul class= "nav navbar-nav">
-			<li class="active"><a href="/">Home</a></li>
-		</ul>
-		<form class="navbar-form navbar-left" action="action_page.php">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Search">
-				<div class="input-group-btn">
-					<button class="btn btn-default" type="submit">
-						<i3 class="glyphicon glyphicon-search"></i3>
-					</button>
-				</div>
-			</div>
-		</form>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="/User"><span class="glyphicon glyphicon-user"></span> <%=Username%></a></li>
-		</ul>
-	</div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img class ="navbar-brand" src = "/img/inkpotlogo.png" width="50" height = "50">
+            <a class="navbar-brand" href="/">Ink Pot</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/"><b>Home</b></a></li>
+        </ul>
+        <form class="navbar-form navbar-left" action="action_page.php">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i3 class="glyphicon glyphicon-search"></i3>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/User"><span class="glyphicon glyphicon-user"></span>
+                    <%=Username%></a></li>
+        </ul>
+    </div>
 </nav>
-<div class="container-fluid" >
+<div class="container-fluid">
     <div class="row">
         <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="#">Recent Posts</a></li>
                 <div class="well">
-      				<p>ADS</p>
-      			</div>
-      			<div class="well">
-        			<p>ADS</p>
-      			</div>
+                    <p>ADS</p>
+                </div>
+                <div class="well">
+                    <p>ADS</p>
+                </div>
             </ul>
         </div>
     </div>

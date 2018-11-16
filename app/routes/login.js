@@ -39,7 +39,11 @@ router.post('/login', function (req, res, next) {
             } else {
                 req.session.user = req.body.username;
                 //console.log(req.cookie);
-                res.redirect('/');
+                if (req.session.redirect) {
+                    res.redirect(req.session.redirect);
+                    req.session.redirect = '/';
+                } else
+                    res.redirect('/');
             }
         });
 });
