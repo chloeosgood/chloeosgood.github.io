@@ -11,7 +11,8 @@ router.get('/ResetPassword', function (req, res) {
             pageTitle: "Change Password",
             pageID: "Change Password Page",
             Location: "../",
-            ConfirmOldPassword: 'True'
+            ConfirmOldPassword: 'True',
+            error:""
         });
     } else {
         res.redirect('login');
