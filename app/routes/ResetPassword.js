@@ -18,7 +18,7 @@ router.get('/ResetPassword', function (req, res) {
     }
 });
 
-router.post('/RestPassword', function (req, res) {
+router.post('/ResetPassword', function (req, res) {
     //test queries for reset password
 
     if ((req.body.password_1 != req.body.password_2)) {
@@ -37,8 +37,9 @@ router.post('/RestPassword', function (req, res) {
         }, {
             password: req.body.password_1
         }, function (err, doc) {
-            if (err) {
-                console.log(err);
+            if (err) throw err;
+            console.log(doc);
+            if (doc = null || doc.length == 0) {
                 res.render('ChangePassword', {
                     pageTitle: "Change Password",
                     pageID: "Change Password Page",
@@ -46,10 +47,10 @@ router.post('/RestPassword', function (req, res) {
                     ConfirmOldPassword: 'True',
                     error: '*Current password does not match*'
                 });
-            }else{
+            } else {
                 res.redirect('/');
-            }
 
+            }
         })
 
     }
