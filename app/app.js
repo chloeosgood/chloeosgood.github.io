@@ -33,6 +33,7 @@ app.use(require('./routes/SignUp'));
 app.use(require('./routes/ForgotPassword'));
 app.use(require('./routes/CreatePost'));
 app.use(require('./routes/ResetPassword'));
+app.use(require('./routes/User'));
 
 require('./util/mongoose.js')(); //adds mongoose connection
 
