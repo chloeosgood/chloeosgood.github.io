@@ -31,6 +31,14 @@
     {
         background:rgb(228,60,64,.6);
     }
+    .navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 0px 0px; 
+        padding-left:10px;
+    font-size: 18px;
+    line-height: 20px;
+}
     .navbar-inverse .navbar-brand ,
     .navbar-inverse .navbar-nav > li > a,
     .navbar-inverse .navbar-nav > .active > a
@@ -55,9 +63,10 @@
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <img class ="navbar-brand" src = "/img/inkpotlogo.png" width="50" height = "50">
-            <a class="navbar-brand" href="/">Ink Pot</a>
+        <div class="navbar-header">\
+            <a class="navbar-brand" href="/">
+                <img class="navbar-brand" src="/img/InkPotLogoSmall.png">
+            </a>
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="/"><b>Home</b></a></li>
@@ -73,8 +82,10 @@
             </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/User"><span class="glyphicon glyphicon-user"></span>
-                    <%=Username%></a></li>
+            <li><a href="/User" class='right-side'><span class="glyphicon glyphicon-user"></span>
+                    <b>
+                        <%=Username%></b></a></li>
+            <li><a href="/SignOut" class="right-side"><b>Signout</b></a></li>
         </ul>
     </div>
 </nav>

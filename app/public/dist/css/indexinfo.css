@@ -7,7 +7,7 @@ div.Thread {
     border-color: black;
     border-width: 1px;
     border-radius: 25px 25px 25px 25px;
-    background: white;
+    background: rgb(228,60,64);
     width: 90%;
     height: 100px;
     transition: .3s;
@@ -15,18 +15,23 @@ div.Thread {
     text-decoration: none;
     margin-bottom: 15px;
 }
-
+ div.testclass{
+        margin-top: 75px;
+    }
 div.Thread:hover {
     transition: .3s;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .75), 0 6px 20px 0 rgba(0, 0, 0, .75);
+    box-shadow: 0 4px 8px 0 rgba(0,178,169, .75), 0 6px 20px 0 rgba(0,178,169, .75);
     border-radius: 5px 5px 5px 5px;
 }
 
 div.Thread:active {
-    background: lightgray;
+    background: rgba(0,178,169);
 }
 
-
+a.UserTag{
+    text-decoration: none;
+    color: black;
+}
 
 div.Thread-Info {
     display: table-cell;
