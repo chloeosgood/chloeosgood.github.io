@@ -40,7 +40,7 @@ router.post('/ResetPassword', function (req, res) {
         }, function (err, doc) {
             if (err) throw err;
             console.log(doc);
-            if (doc = null || doc.length == 0) {
+            if (doc == null || doc.length == 0) {
                 res.render('ChangePassword', {
                     pageTitle: "Change Password",
                     pageID: "Change Password Page",
