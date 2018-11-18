@@ -35,7 +35,7 @@ ThreadSchema.methods = {
 
 ThreadSchema.statics = {
     list: function(cb) {
-        return this.find({}, cb);
+        return this.find({}).populate('recentPost').populate('recentUser').exec(cb);
     }
 };
 
