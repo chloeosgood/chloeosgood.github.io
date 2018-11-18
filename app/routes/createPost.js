@@ -3,7 +3,8 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var $ = require("jquery");
 
-const Post = require('../models/post');
+const Thread = require('../models/thread.js');
+const Post = require('../models/post.js');
 
 router.get('/CreatePost', function (req, res) {
     if (req.session.user) {
@@ -35,7 +36,15 @@ router.post('/CreatePost', function (req, res, next) {
             //     Username: req.session.user,
             //     Data: req.body.url
             // });
-            res.redirect(`/Thread/:${post.thread}/:${post._id}`);
+            
+            Thread.findOneAndUpdate({ name: thread }, { recentPost: post._id, recentUser: req.session.user._id }, 
+                { new: true },
+                function (err, thread) {
+                    if (err) return next(err);
+
+                    console.log(thread);
+                    res.redirect(`/Thread/:${post.thread}/:${post._id}`);
+                });
         });
     } else {
         res.redirect('/login');
