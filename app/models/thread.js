@@ -6,11 +6,11 @@ const ThreadSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
-    recent_post: {
+    recentPost: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post'
     },
-    recent_user: {
+    recentUser: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
