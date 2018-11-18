@@ -8,17 +8,17 @@ module.exports.mailer = function(to, cb) {
         port: 465,
         secure: true,
         auth: {
-          user: '<from>',
-          pass: '<pass>'
+          user: 'InkPotForumProject@gmail.com',
+          pass: 'FlyingMongooses12'
         }
     });
 
     const md5Pass = crypto.createHash('md5').update(to).digest('hex');
 
     let mailOptions = {
-        from: '"Test" <feizhouttu@gmail.com>',
+        from: '"Validation Your Password" <InkPotForumProject@gmail.com>',
         to: to,
-        subject: 'Test',
+        subject: 'Validation Code',
         text: `${md5Pass}`,
         html: `<p>${md5Pass}</p>`
     };
