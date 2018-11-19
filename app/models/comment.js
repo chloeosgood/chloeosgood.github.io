@@ -24,7 +24,7 @@ CommentSchema.methods = {
 
 CommentSchema.statics = {
     list: function(cb) {
-        return this.find({}, cb);
+        return this.find({}).populate('user').exec(cb);
     }
 };
 

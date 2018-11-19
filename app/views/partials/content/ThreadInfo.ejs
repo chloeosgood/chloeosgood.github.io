@@ -14,18 +14,18 @@
 
                     <img class="Profile" src="https://www.w3schools.com/images/w3schools_green.jpg">
 
-                    <h5 class = "threadtitle">Thread</h5>
+                    <h5 class = "threadtitle"><%= Post.title%></h5>
                 </div>
 
                 <div class="Post Left">
-                    <h5>User</h5>
+                    <h5><%= Post.user.username%></h5>
 
                 </div>
                 <div class="Post Right">
                     <h5>User Tag</h5>
                 </div>
                 <div class="Content Body">
-                    <p class = "postcontent">This sucks.</p>
+                    <p class = "postcontent"><%= Post.body%></p>
 
                 </div>
             </div>
@@ -47,27 +47,28 @@
             <h5 class= "comments">Comments <i class="fa fa-angle-down"></i> </h5>
 
         </div>
-
-        <div class="Comment">
-            <div class="CommentHeader">
-                <div class="CommentHeader LeftWhite">
-
-                    <h4 class="commentUser">User</h4>
-
-                </div>
-
-
-
-                <div class="Comment Body">
-                    <p class= "commentparagraph">This sucks.</p>
-                    <div class="PostFooter">
-                        <i class="fa fa-heart"></i>
-                        <i class="fa fa-trash-o"></i>
-
+        <% for (let i = 0; i < Comments.length; i++) {%>
+            <div class="Comment">
+                <div class="CommentHeader">
+                    <div class="CommentHeader LeftWhite">
+    
+                        <h4 class="commentUser"><%=Comments[i].user.username%></h4>
+    
+                    </div>
+    
+    
+    
+                    <div class="Comment Body">
+                        <p class= "commentparagraph"><%=Comments[i].text%></p>
+                        <div class="PostFooter">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-trash-o"></i>
+    
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <%}%>
     </div>
 </div>
 
