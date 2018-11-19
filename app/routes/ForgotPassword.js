@@ -37,7 +37,8 @@ router.post('/ForgotPassword', function (req, res, next) {
                     pageTitle: "Change Password",
                     pageID: "Change Password Page",
                     Location: "../",
-                    ConfirmOldPassword: 'False'
+                    ConfirmOldPassword: 'False',
+                    error: ''
                 });
             } else {
                 res.render('ValidateResetPassword', {
