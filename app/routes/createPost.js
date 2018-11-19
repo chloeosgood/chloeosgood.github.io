@@ -25,7 +25,7 @@ router.post('/CreatePost', function (req, res, next) {
     console.log(req.body);
 
     if (req.session.user) {
-        Post.create({ user: req.session.user, thread: TODO, title: TODO, body: req.body.body }, function(err, post) {
+        Post.create({ user: req.session.user._id, thread: 'Test', title: 'Test Post', body: 'Test Body' }, function(err, post) {
             if (err) return next(err);
     
             console.log(post);
@@ -37,13 +37,13 @@ router.post('/CreatePost', function (req, res, next) {
             //     Data: req.body.url
             // });
             
-            Thread.findOneAndUpdate({ name: TODO }, { recentPost: TODO, recentUser: req.session.user}, 
+            Thread.findOneAndUpdate({ name: 'Test' }, { recentPost: post._id, recentUser: req.session.user._id }, 
                 { new: true },
                 function (err, thread) {
                     if (err) return next(err);
 
                     console.log(thread);
-                    res.redirect(`/Thread/:${TODO}/:${TODO}`);
+                    res.redirect(`/Thread/:${thread.name}/:${post._id}`);
                 });
         });
     } else {
