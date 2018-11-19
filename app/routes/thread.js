@@ -63,6 +63,7 @@ router.get('/Thread/:postId', function(req, res, next) {
     } else {
         req.session.redirect = `/Thread/${req.params.postId}`;
         res.redirect('/login');
+        
     }
 });
 

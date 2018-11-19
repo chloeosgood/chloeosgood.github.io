@@ -64,15 +64,29 @@ div.Middle {
     border-left: 1px solid;
     border-right: 1px solid;
 }
+div.Middle h3 {
+    padding-left: 5px;
+}
+
 
 div.Middle h4 {
     font-weight: normal;
+    padding-left: 15px;
 }
 
 div.Right {
+    display: table-cell;
     width: 10%;
 }
 
+div.Likes{
+    display: block;
+}
+
 i.info {
-    display: table-row;
+    padding-right: 5px;
+    padding-bottom: 15px;
+}
+h5{
+    display: inline;
 }

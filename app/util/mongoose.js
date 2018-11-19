@@ -15,8 +15,8 @@ module.exports = () => {
     });
     db.once('open', function () {
         console.log('DB Opened');
-        clear();
-        loadSample();
+        //clear();
+        //loadSample();
         //testDb();
     });
 };
@@ -78,16 +78,16 @@ const loadSample = () => {
     const thread3 = 'Test Name 3';
 
     Thread.create({ name:  thread1 }, function(err, thread) {
-        console.log(err);
-        console.log(thread);
+        //console.log(err);
+        //console.log(thread);
     });
     Thread.create({ name: thread2 }, function(err, thread) {
-        console.log(err);
-        console.log(thread);
+        //console.log(err);
+        //console.log(thread);
     });
     Thread.create({ name: thread3 }, function(err, thread) {
-        console.log(err);
-        console.log(thread);
+        //console.log(err);
+        //console.log(thread);
     });
 
 
@@ -98,18 +98,18 @@ const loadSample = () => {
         function(err, post) {
             Thread.findOneAndUpdate({ name: thread2 }, { recentPost: post._id, recentUser: user._id }, { new: true},
             function(err, thread) {
-                console.log(thread);
+                //console.log(thread);
             });
 
             Comment.create({ user: user._id, post: post._id, text: 'Comment 1 for Post 1' }, function(err, comment) {
-                console.log(err);
+                //console.log(err);
 
-                console.log(comment);
+                //console.log(comment);
             });
             Comment.create({ user: user._id, post: post._id, text: 'Comment 2 for Post 1' }, function(err, comment) {
-                console.log(err);
+                //console.log(err);
 
-                console.log(comment);
+                //console.log(comment);
             });
         });
     });
@@ -120,13 +120,13 @@ const loadSample = () => {
         function(err, post) {
             Thread.findOneAndUpdate({ name: thread1 }, { recentPost: post._id, recentUser: user._id }, { new: true},
             function(err, thread) {
-                console.log(thread);
+                //console.log(thread);
             });
 
             Comment.create({ user: user._id, post: post._id, text: 'Comment 1 for Post 2' }, function(err, comment) {
-                console.log(err);
+                //console.log(err);
     
-                console.log(comment);
+                //console.log(comment);
             });
         });
     });
@@ -137,13 +137,13 @@ const loadSample = () => {
         function(err, post) {
             Thread.findOneAndUpdate({ name: thread3 }, { recentPost: post._id, recentUser: user._id }, { new: true},
             function(err, thread) {
-                console.log(thread);
+                //console.log(thread);
             });
 
             Comment.create({ user: user._id, post: post._id, text: 'Comment 1 for Post 3' }, function(err, comment) {
-                console.log(err);
+                //console.log(err);
     
-                console.log(comment);
+                //console.log(comment);
             });
         });
     });

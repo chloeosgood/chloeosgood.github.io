@@ -3,14 +3,16 @@ var router = express.Router();
 
 const User = require('../models/user.js');
 
-router.get('/User', function (req, res) {
+router.get('/User/:Username', function (req, res) {
+    if(req.params.Username == "img_avatar4.png")
+        return;
     if (req.session.user) {
-        User.findOne({ username: req.session.user}, function(err, user) {
+        User.findOne({ username: req.params.Username}, function(err, user) {
             res.render('UserPage', {
                 pageTitle: "User",
                 pageID: "User Page",
                 Location: "../",
-                Username: req.session.user,
+                Username: user.username,
                 name: `${user.name.firstname} ${user.name.lastname}`,
                 major: user.major,
                 classification: user.classification
@@ -18,7 +20,7 @@ router.get('/User', function (req, res) {
         });
     } else
         {
-            req.session.redirect = '/User';
+            req.session.redirect = '/User/'+req.params.Username;
             res.redirect('/login');
         }
         
