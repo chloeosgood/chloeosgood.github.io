@@ -16,7 +16,7 @@ module.exports.mailer = function(to, cb) {
     const md5Pass = crypto.createHash('md5').update(to).digest('hex');
 
     let mailOptions = {
-        from: '"Validation Your Password" <InkPotForumProject@gmail.com>',
+        from: '"Validate Your Password" <InkPotForumProject@gmail.com>',
         to: to,
         subject: 'Validation Code',
         text: `${md5Pass}`,
