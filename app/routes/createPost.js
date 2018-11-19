@@ -25,25 +25,25 @@ router.post('/CreatePost', function (req, res, next) {
     console.log(req.body);
 
     if (req.session.user) {
-        Post.create({ user: req.session.user._id, thread: thread, title: title, body: body }, function(err, post) {
+        Post.create({ user: req.session.user, thread: TODO, title: TODO, body: req.body.body }, function(err, post) {
             if (err) return next(err);
     
             console.log(post);
             // res.render('CreatePost', {
             //     pageTitle: "CreatePost",
             //     pageID: "Create Post",
-            //     Location: "../",
+            //     Location: "../",\\\\\\\\\\\\\\\
             //     Username: req.session.user,
             //     Data: req.body.url
             // });
             
-            Thread.findOneAndUpdate({ name: thread }, { recentPost: post._id, recentUser: req.session.user._id }, 
+            Thread.findOneAndUpdate({ name: TODO }, { recentPost: TODO, recentUser: req.session.user}, 
                 { new: true },
                 function (err, thread) {
                     if (err) return next(err);
 
                     console.log(thread);
-                    res.redirect(`/Thread/:${post.thread}/:${post._id}`);
+                    res.redirect(`/Thread/:${TODO}/:${TODO}`);
                 });
         });
     } else {

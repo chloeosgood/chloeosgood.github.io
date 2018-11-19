@@ -6,10 +6,10 @@ const Post = require('../models/post.js');
 const Comment = require('../models/comment.js');
 
 router.get('/Thread', function (req, res) {
+    //Thread.create({name: 'Test',recentPost: "alksjdhflkajs",recentUser:"mathendr"});
     if (req.session.user) {
         Thread.list(function(err, threads) {
             if (err) return next(err);
-
             // thread.recentPost
             // thread.recentUser
             console.log(threads);
@@ -23,7 +23,7 @@ router.get('/Thread', function (req, res) {
         });
     } else
         {
-            // req.session.redirect = '/Thread';
+            req.session.redirect = '/Thread';
             res.redirect('/login'); 
         }
         
