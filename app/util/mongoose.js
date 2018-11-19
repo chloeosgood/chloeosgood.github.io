@@ -15,17 +15,33 @@ module.exports = () => {
     });
     db.once('open', function () {
         console.log('DB Opened');
-        // loadSample();
+        clear();
+        loadSample();
         //testDb();
     });
 };
 
 // Test
+const clear = () => {
+    const User = require('../models/user.js');
+    const Thread = require('../models/thread.js');
+    const Post = require('../models/post.js');
+    const Comment = require('../models/comment.js');
+    const Auth = require('../models/auth.js');
+
+    Auth.deleteMany({}, function(err) { console.log });
+    Comment.deleteMany({}, function(err) { console.log });
+    User.deleteMany({}, function(err) { console.log });
+    Thread.deleteMany({}, function(err) { console.log });
+    Post.deleteMany({}, function(err) { console.log });
+}
+
 const loadSample = () => {
     const User = require('../models/user.js');
     const Thread = require('../models/thread.js');
     const Post = require('../models/post.js');
     const Comment = require('../models/comment.js');
+    const Auth = require('../models/auth.js');
 
     const user1 = {
         name: {
