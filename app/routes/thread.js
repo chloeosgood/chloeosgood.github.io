@@ -5,7 +5,7 @@ const Thread = require('../models/thread.js');
 const Post = require('../models/post.js');
 const Comment = require('../models/comment.js');
 
-router.get('/Thread', function (req, res) {
+router.get('/test/thread', function(req, res, next) {
     // Thread List, testing purpose, don't change else where.
     Thread.list(function(err, threads) {
         if (err) return next(err);
@@ -13,6 +13,9 @@ router.get('/Thread', function (req, res) {
         // thread.recentUser
         console.log(threads);
     });
+});
+
+router.get('/Thread', function (req, res) {
     if (req.session.user) {
         Thread.list(function(err, threads) {
             if (err) return next(err);
@@ -68,12 +71,15 @@ router.get('/Thread/:thread/:postId/addComment', function(req, res, next) {
 
 router.post('/Thread/:thread/:postId/addComment', function(req, res, next) {
     if (req.session.user) {
-        Comment.create({ user: req.session.user._id, post: req.params.postId, text: text }, function(err, comment) {
+        User.findOne({ username: req.session.user }, function(err, user) {
             if (err) return next(err);
 
-            console.log(comment);
-
-        })
+            Comment.create({ user: req.session.user._id, post: req.params.postId, text: text }, function(err, comment) {
+                if (err) return next(err);
+    
+                console.log(comment);
+            });
+        });
     } else {
         res.redirect('/login');
     }
