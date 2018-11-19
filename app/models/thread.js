@@ -8,11 +8,13 @@ const ThreadSchema = new mongoose.Schema({
     },
     recentPost: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Post'
+        ref: 'Post',
+        default: null,
     },
     recentUser: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        default: null
     }
     // description: {
         // type: String
