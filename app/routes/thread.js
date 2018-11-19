@@ -61,7 +61,7 @@ router.get('/Thread/:postId', function(req, res, next) {
             });
         });
     } else {
-        req.session.redirect = `/Thread/:${req.params.postId}`;
+        req.session.redirect = `/Thread/${req.params.postId}`;
         res.redirect('/login');
     }
 });
@@ -70,7 +70,7 @@ router.get('/Thread/:postId/addComment', function(req, res, next) {
     if (req.session.user) {
         // TODO
     } else {
-        req.session.redirect = `/Thread/:${req.params.postId}/addComment`;
+        req.session.redirect = `/Thread/${req.params.postId}/addComment`;
         res.redirect('/login');
     }
 });

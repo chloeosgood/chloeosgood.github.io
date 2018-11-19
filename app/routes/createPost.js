@@ -29,7 +29,7 @@ router.post('/CreatePost', function (req, res, next) {
         User.findOne({ username: req.session.user }, function(err, user) {
             if (err) return next(err);
 
-            Post.create({ user: user._id, thread: 'Test', title: 'Test Post', body: 'Test Body' }, function(err, post) {
+            Post.create({ user: user._id, thread: 'Test Name 2', title: 'Test Post', body: 'Test Body' }, function(err, post) {
                 if (err) return next(err);
         
                 console.log(post);
@@ -41,13 +41,13 @@ router.post('/CreatePost', function (req, res, next) {
                 //     Data: req.body.url
                 // });
                 
-                Thread.findOneAndUpdate({ name: 'Test' }, { recentPost: post._id, recentUser: user._id }, 
+                Thread.findOneAndUpdate({ name: 'Test Name 2' }, { recentPost: post._id, recentUser: user._id }, 
                     { new: true },
                     function (err, thread) {
                         if (err) return next(err);
     
                         console.log(thread);
-                        res.redirect(`/Thread/:${thread.name}/:${post._id}`);
+                        res.redirect(`/Thread/${post._id}`);
                     });
             });
         });
