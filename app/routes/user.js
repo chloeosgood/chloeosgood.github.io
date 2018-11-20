@@ -12,7 +12,8 @@ router.get('/User/:Username', function (req, res) {
                 pageTitle: "User",
                 pageID: "User Page",
                 Location: "../",
-                Username: user.username,
+                Username: req.session.user,
+                CurrentUser: user.username,
                 name: `${user.name.firstname} ${user.name.lastname}`,
                 major: user.major,
                 classification: user.classification
