@@ -48,7 +48,7 @@
         <div class="PostFooter">
 
             <i class="fa fa-reply"></i>
-            <i onclick= "myFunction(this)" class="fa fa-heart"></i><p id="demo">0</p>
+            <i class="fa fa-heart"></i>
             <i class="fa fa-trash-o"></i>
             <i class="fa fa-flag-o"></i>
             <i class="fa fa-share-alt"></i>
@@ -92,21 +92,4 @@
 
 
 
-<script>
 
-
-
-function myFunction(x) {
-    x.classList.toggle("fa-thumbs-down");
-    if(typeof(Storage) !== "undefined") {
-        if (localStorage.clickcount) {
-            localStorage.clickcount = Number(localStorage.clickcount)+1;
-        } else {
-            localStorage.clickcount = 1;
-        }
-        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
-    } else {
-        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
-    }
-}
-</script>
