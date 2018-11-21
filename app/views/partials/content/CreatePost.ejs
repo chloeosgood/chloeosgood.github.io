@@ -26,9 +26,20 @@
                 <div class="pull-right">
 
                 </div>
-                <h1>Create Post <br /> <small>What's Stirring</small></h1>
+                <h1>Create Post <br /> <small>What's Shakin'</small></h1>
 
                 <hr />
+                <div>
+                  <form action="/action_page.php">
+                    <label>Thread</label>
+                    <input type="text" placeholder="Thread..">
+
+                    <label>Title</label>
+                    <input type="text" placeholder="Title..">
+
+                
+                  </form>
+                </div>
                 <!---
 	Please read this before copying the toolbar:
 	* One of the best things about this widget is that it does not impose any styling on you, and that it allows you 
@@ -96,10 +107,10 @@
                     </div>
                     <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="">
                 </div>
-
                 <div id="editor" class = "richeditor12"name='editor'>
                     <%-Data%>
                 </div>
+                
                 <button type="hidden" name = 'Button' value = 'Validate' onclick = 'buttonClicked()'>Submit</button>
             </div>
                 <input class = 'invisibleinput' type = "text" name = "post"> 
