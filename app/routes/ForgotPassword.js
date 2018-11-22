@@ -15,7 +15,7 @@ router.get('/ForgotPassword', function (req, res) {
 
 router.post('/ForgotPassword', function (req, res, next) {
     if (req.body.Button == 'Reset') {
-        mailer(req.body.email, function(err, msgId) {
+        mailer(req.body.email, function (err, msgId) {
             if (err) return next(err);
             console.log(msgId);
 
@@ -27,7 +27,9 @@ router.post('/ForgotPassword', function (req, res, next) {
             });
         });
     } else if (req.body.Button == 'Validate') {
-        Auth.findOne({ token: req.body.code }, function(err, auth) {
+        Auth.findOne({
+            token: req.body.code
+        }, function (err, auth) {
             if (err) return next(err);
             console.log(auth);
 
@@ -49,6 +51,9 @@ router.post('/ForgotPassword', function (req, res, next) {
                 });
             }
         });
+    } else if (req.body.Button == 'Change') {
+        //req.body.password
+        //req.body.password_2
     }
 });
 

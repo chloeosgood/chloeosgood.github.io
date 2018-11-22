@@ -47,7 +47,6 @@ figure,
 footer,
 header,
 hgroup,
-nav,
 section {
     display: block;
 }
@@ -97,14 +96,6 @@ sub {
     bottom: -0.25em;
 }
 
-img {
-    max-width: 100%;
-    width: auto\9;
-    height: auto;
-    vertical-align: middle;
-    border: 0;
-    -ms-interpolation-mode: bicubic;
-}
 
 #map_canvas img,
 .google-maps img {

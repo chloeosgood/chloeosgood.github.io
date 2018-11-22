@@ -26,12 +26,19 @@ router.post('/CreatePost', function (req, res, next) {
     console.log(req.body);
 
     if (req.session.user) {
-        User.findOne({ username: req.session.user }, function(err, user) {
+        User.findOne({
+            username: req.session.user
+        }, function (err, user) {
             if (err) return next(err);
 
-            Post.create({ user: user._id, thread: 'Test Name 2', title: 'Test Post', body: 'Test Body' }, function(err, post) {
+            Post.create({
+                user: user._id,
+                thread: req.body.Thread,
+                title: req.body.Title,
+                body: 'Test'
+            }, function (err, post) {
                 if (err) return next(err);
-        
+
                 console.log(post);
                 // res.render('CreatePost', {
                 //     pageTitle: "CreatePost",
@@ -40,13 +47,25 @@ router.post('/CreatePost', function (req, res, next) {
                 //     Username: req.session.user,
                 //     Data: req.body.url
                 // });
-                
-                Thread.findOneAndUpdate({ name: 'Test Name 2' }, { recentPost: post._id, recentUser: user._id }, 
-                    { new: true },
+
+                Thread.findOneAndUpdate({
+                        name: req.body.Thread
+                    }, {
+                        recentPost: post._id,
+                        recentUser: user._id
+                    }, {
+                        new: true
+                    },
                     function (err, thread) {
                         if (err) return next(err);
-    
-                        console.log(thread);
+                        if (thread == null)
+                            Thread.create({
+                                name: req.body.Thread,
+                                recentPost: post._id,
+                                recentUser: user._id
+                            }, function (err, thread) {
+                                if (err) return next(err);
+                            });
                         res.redirect(`/Thread/${post._id}`);
                     });
             });
