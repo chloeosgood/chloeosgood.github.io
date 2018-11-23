@@ -13,7 +13,7 @@ module.exports.mailer = function(to, cb) {
         }
     });
 
-    const md5Pass = crypto.createHash('md5').update(to).digest('hex');
+    const md5Pass = Math.floor(Math.random()*900000) + 100000;
 
     let mailOptions = {
         from: '"Validate Your Password" <InkPotForumProject@gmail.com>',
