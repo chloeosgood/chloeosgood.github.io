@@ -3,6 +3,8 @@ var router = express.Router();
 
 const mailer = require('../util/mailer.js').mailer;
 const Auth = require('../models/auth.js');
+const User = require('../models/user.js');
+var email = '';
 
 router.get('/ForgotPassword', function (req, res) {
     res.render('ForgotPassword', {
@@ -31,10 +33,11 @@ router.post('/ForgotPassword', function (req, res, next) {
             token: req.body.code
         }, function (err, auth) {
             if (err) return next(err);
-            console.log(auth);
+            //console.log(auth);
 
             if (auth && (Date.now() < auth.createAt)) {
-                console.log(`${auth.token}, ${auth.createAt}`);
+                //console.log(`${auth.token}, ${auth.createAt}`);
+                email = auth.email;
                 res.render('ChangePassword', {
                     pageTitle: "Change Password",
                     pageID: "Change Password Page",
@@ -52,9 +55,32 @@ router.post('/ForgotPassword', function (req, res, next) {
             }
         });
     } else if (req.body.Button == 'Change') {
-        //req.body.password
-        //req.body.password_2
+        console.log(req.body);
+        if (req.body.password_1 == req.body.password_2) {
+            //req.body.password
+            //req.body.password_2
+            User.findOneAndUpdate({
+                email: email
+            }, {
+                password: req.body.password_1
+            }, function (err, doc) {
+                res.render('Login', {
+                    pageTitle: "Login",
+                    pageID: "Log in",
+                    Location: "../",
+                    error: '*Password Reset*'
+                })
+            });
+        }
+        else{
+            res.render('ChangePassword', {
+                    pageTitle: "Change Password",
+                    pageID: "Change Password Page",
+                    Location: "../",
+                    ConfirmOldPassword: 'False',
+                    error: 'Passwords Do no match'
+                });
+        }
     }
 });
-
 module.exports = router;

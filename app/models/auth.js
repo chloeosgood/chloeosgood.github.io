@@ -8,13 +8,14 @@ const AuthSchema = new mongoose.Schema({
     createAt: {
         type: Date,
         default: Date.now
+    },
+    email: {
+        type: String
     }
 });
 
-AuthSchema.methods = {
-};
+AuthSchema.methods = {};
 
-AuthSchema.statics = {
-};
+AuthSchema.statics = {};
 
 module.exports = mongoose.model('Auth', AuthSchema);

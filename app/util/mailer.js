@@ -25,7 +25,7 @@ module.exports.mailer = function(to, cb) {
 
     const dateExpiry = new Date();
     dateExpiry.setHours(dateExpiry.getHours() + 1);
-    Auth.create({ token: md5Pass, createAt: dateExpiry }, function(err, auth) {
+    Auth.create({ token: md5Pass, createAt: dateExpiry ,email:to}, function(err, auth) {
         if (err) console.log(err);
 
         console.log(auth);
