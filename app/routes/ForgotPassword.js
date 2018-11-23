@@ -64,13 +64,17 @@ router.post('/ForgotPassword', function (req, res, next) {
             }, {
                 password: req.body.password_1
             }, function (err, doc) {
-                email = '';
+                
                 res.render('Login', {
                     pageTitle: "Login",
                     pageID: "Log in",
                     Location: "../",
                     error: '*Password Reset*'
-                })
+                });
+                Auth.deleteOne({email: email},function(err){
+                    if(err) return next(err);
+                });
+                email = '';
             });
         }
         else{
