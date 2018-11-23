@@ -55,7 +55,7 @@ router.post('/ForgotPassword', function (req, res, next) {
             }
         });
     } else if (req.body.Button == 'Change') {
-        console.log(req.body);
+        //console.log(req.body);
         if (req.body.password_1 == req.body.password_2) {
             //req.body.password
             //req.body.password_2

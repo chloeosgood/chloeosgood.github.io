@@ -35,7 +35,7 @@ router.post('/CreatePost', function (req, res, next) {
                 user: user._id,
                 thread: req.body.Thread,
                 title: req.body.Title,
-                body: 'Test'
+                body: req.body.post
             }, function (err, post) {
                 if (err) return next(err);
 

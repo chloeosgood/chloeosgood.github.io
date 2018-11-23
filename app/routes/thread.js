@@ -7,7 +7,7 @@ const Comment = require('../models/comment.js');
 
 router.get('/Thread', function (req, res) {
     if (req.session.user) {
-        Post.findOne({ thread: 'Test Name 2' }, function(err, _post) {
+        Post.findOne({ thread: 'Basketball' }, function(err, _post) {
             console.log(err);
             Post.findOne({ _id: _post._id })
             .populate('user')
@@ -38,7 +38,7 @@ router.get('/Thread', function (req, res) {
         
 });
 
-router.get('/Thread/:postId', function(req, res, next) {
+router.get('/Thread/:Threadname/:postId', function(req, res, next) {
     if (req.session.user) {
         Post.findOne({ _id: req.params.postId })
         .populate('user')
@@ -53,7 +53,7 @@ router.get('/Thread/:postId', function(req, res, next) {
                 res.render('Thread', {
                     pageTitle: "Thread",
                     pageID: "Thread Page",
-                    Location: "../",
+                    Location: "../../",
                     Username: req.session.user,
                     Post: post,
                     Comments: comments

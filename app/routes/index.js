@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
             if (err) return next(err);
             // thread.recentPost
             // thread.recentUser
-            //console.log(threads[0]);
+            console.log(threads[0]);
             res.render('index', {
                 pageTitle: "Home",
                 pageID: "Home Page",

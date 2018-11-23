@@ -1,4 +1,4 @@
-<link href="dist/css/indexinfo.css" rel="stylesheet" media="all">
+<link href="<%=Location%>dist/css/indexinfo.css" rel="stylesheet" media="all">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="row testclass">
     <div class="col-sm-9 col-md-9 main">
@@ -20,7 +20,7 @@
             </div>
 
             <div class="Thread-Info Middle">
-                <a href='/Thread/<%=Threads[i].recentPost._id%>' class='UserTag'>
+                <a href='/Thread/<%=Threads[i].name%>/<%=Threads[i].recentPost._id%>' class='UserTag'>
                     <h3>
                         <%=Threads[i].name%>
                     </h3>
