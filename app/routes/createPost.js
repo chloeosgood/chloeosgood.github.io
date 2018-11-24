@@ -52,7 +52,8 @@ router.post('/CreatePost', function (req, res, next) {
                         name: req.body.Thread
                     }, {
                         recentPost: post._id,
-                        recentUser: user._id
+                        recentUser: user._id,
+                        $inc: { 'count': 1 }
                     }, {
                         new: true
                     },
@@ -63,7 +64,7 @@ router.post('/CreatePost', function (req, res, next) {
                                 name: req.body.Thread,
                                 recentPost: post._id,
                                 recentUser: user._id,
-                                count: thread.count + 1
+                                count: 1
                             }, function (err, thread) {
                                 if (err) return next(err);
                             });
