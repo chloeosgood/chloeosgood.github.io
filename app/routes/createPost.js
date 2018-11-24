@@ -68,7 +68,7 @@ router.post('/CreatePost', function (req, res, next) {
                             }, function (err, thread) {
                                 if (err) return next(err);
                             });
-                        res.redirect(`/Thread/${post._id}`);
+                        res.redirect(`/Thread/${req.body.thread}/${post._id}`);
                     });
             });
         });
