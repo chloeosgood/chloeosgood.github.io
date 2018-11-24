@@ -6,11 +6,10 @@ const Thread = require('../models/thread.js');
 router.get('/', function (req, res, next) {
 
     if (req.session.user) {
+        //this should sort so that the most recent posts are at the top
         Thread.list(function(err, threads) {
             if (err) return next(err);
-            // thread.recentPost
-            // thread.recentUser
-            console.log(threads[0]);
+            //console.log(threads[0]);
             res.render('index', {
                 pageTitle: "Home",
                 pageID: "Home Page",
