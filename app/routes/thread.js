@@ -10,6 +10,8 @@ router.get('/Thread', function (req, res) {
         //i would like this to have a total of how many posts that are currently
         //in each thread like combine the name of the thread with a count of how many
         //posts there are for each thread. just a simple count nothing fancy :)
+
+        // Threads[i].count
         Thread.list(function (err, threads) {
             if (err) return next(err);
             res.render('ThreadList', {

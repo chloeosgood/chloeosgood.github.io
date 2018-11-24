@@ -36,13 +36,12 @@ ThreadSchema.methods = {
 };
 
 ThreadSchema.statics = {
-    list: function(pageNum, cb) {
+    list: function(cb) {
         return this.find({})
-        .skip(0)
-        .limit(6)
         .populate('recentPost')
         .populate('recentUser')
         .sort({ recentPost: -1 })
+        .limit(6)
         .exec(cb);
     }
 };
