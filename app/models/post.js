@@ -62,7 +62,7 @@ PostSchema.methods = {
 
 PostSchema.statics = {
   findByThread: function(thread, cb) {
-    return this.find({ thread: thread }, cb);
+    return this.find({ thread: thread }).sort({ createdAt: -1 }).populate('user').exec(cb);
   }
 };
 

@@ -30,7 +30,17 @@ router.get('/Thread', function (req, res) {
 router.get('/Thread/:Threadname', function (req, res, next) {
     if (req.session.user) {
         //should pass through all posts that belong to a thread with name req.params.Threadname
-        
+        Post.findByThread(req.params.Threadname, function(err, posts) {
+            if (err) return next(err);
+
+            res.render('ThreadList', {
+                pageTitle: "Threads",
+                pageID: "Thread Page",
+                Location: "../",
+                Username: req.session.user,
+                Posts: posts
+            });
+        });
     }
      else {
         req.session.redirect = `/Thread/${req.params.Threadname}`;

@@ -5,6 +5,8 @@ const Thread = require('../models/thread.js');
 
 router.get('/', function (req, res, next) {
 
+    req.session.user = 'bstehling';
+
     if (req.session.user) {
         //this should sort so that the most recent posts are at the top
         Thread.list(function(err, threads) {
