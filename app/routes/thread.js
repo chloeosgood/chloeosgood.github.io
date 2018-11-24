@@ -12,7 +12,7 @@ router.get('/Thread', function (req, res) {
         //posts there are for each thread. just a simple count nothing fancy :)
 
         // Threads[i].count
-        Thread.list(function (err, threads) {
+        Thread.listByName(function (err, threads) {
             if (err) return next(err);
             //console.log(threads);
             res.render('ThreadList', {

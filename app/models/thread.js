@@ -36,13 +36,19 @@ ThreadSchema.methods = {
 };
 
 ThreadSchema.statics = {
-    list: function(cb) {
-        return this.find({})
+    list: function(options, cb) {
+        return this.find({}, null, options)
         .populate('recentPost')
         .populate('recentUser')
-        .sort({ recentPost: -1 })
-        .limit(6)
         .exec(cb);
+    },
+
+    listByRecentPost: function(cb) {
+        return this.list({ sort: '-recentPost', limit: 6 }, cb);
+    },
+
+    listByName: function(cb) {
+        return this.list({ sort: 'name' }, cb);
     }
 };
 
