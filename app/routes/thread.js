@@ -14,6 +14,7 @@ router.get('/Thread', function (req, res) {
         // Threads[i].count
         Thread.list(function (err, threads) {
             if (err) return next(err);
+            //console.log(threads);
             res.render('ThreadList', {
                 pageTitle: "Threads",
                 pageID: "Thread Page",
@@ -34,7 +35,7 @@ router.get('/Thread/:Threadname', function (req, res, next) {
         //should pass through all posts that belong to a thread with name req.params.Threadname
         Post.findByThread(req.params.Threadname, function(err, posts) {
             if (err) return next(err);
-
+            console.log(posts);
             res.render('ThreadList', {
                 pageTitle: "Threads",
                 pageID: "Thread Page",
@@ -84,7 +85,7 @@ router.get('/Thread/:Threadname/:postId', function (req, res, next) {
     }
 });
 
-router.get('/Thread/:postId/addComment', function (req, res, next) {
+/*router.get('/Thread/:postId/addComment', function (req, res, next) {
     if (req.session.user) {
         // TODO
     } else {
@@ -113,6 +114,6 @@ router.post('/Thread/:postId/addComment', function (req, res, next) {
     } else {
         res.redirect('/login');
     }
-});
+});*/
 
 module.exports = router;
