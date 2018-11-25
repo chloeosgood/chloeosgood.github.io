@@ -12,7 +12,7 @@ router.get('/User/:Username', function (req, res) {
         //part that says posts. should just list all the posts.
         User.findOne({ username: req.params.Username}, function(err, user) {
             Post.find( {user: user._id}, function(err, posts) {
-                console.log(posts);
+                //console.log(posts);
                 res.render('UserPage', {
                     pageTitle: "User",
                     pageID: "User Page",

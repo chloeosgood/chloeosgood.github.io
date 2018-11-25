@@ -30,14 +30,16 @@ router.get('/Thread', function (req, res) {
     }
 
 });
+
+
 router.get('/Thread/:Threadname', function (req, res, next) {
     if (req.session.user) {
         //should pass through all posts that belong to a thread with name req.params.Threadname
         Post.findByThread(req.params.Threadname, function(err, posts) {
             if (err) return next(err);
-            console.log(posts);
-            res.render('ThreadList', {
-                pageTitle: "Threads",
+            //console.log(posts);
+            res.render('Thread', {
+                pageTitle: "Thread",
                 pageID: "Thread Page",
                 Location: "../",
                 Username: req.session.user,
@@ -51,6 +53,7 @@ router.get('/Thread/:Threadname', function (req, res, next) {
 
     }
 });
+
 
 router.get('/Thread/:Threadname/:postId', function (req, res, next) {
     if (req.session.user) {
@@ -68,9 +71,9 @@ router.get('/Thread/:Threadname/:postId', function (req, res, next) {
                     .exec(function (err, comments) {
                         if (err) return next(err);
 
-                        res.render('Thread', {
-                            pageTitle: "Thread",
-                            pageID: "Thread Page",
+                        res.render('Post', {
+                            pageTitle: "Post",
+                            pageID: "Post Page",
                             Location: "../../",
                             Username: req.session.user,
                             Post: post,

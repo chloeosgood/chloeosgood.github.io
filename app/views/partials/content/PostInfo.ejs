@@ -1,0 +1,95 @@
+<!--This is where the Thread info will go Sean you will create this code for what will be shown when a thread is clicked on-->
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="/dist/css/threadinfo.css" rel="stylesheet" media="all">
+</head>
+<div class="row testclass">
+    <div class="col-sm-15 col-md-15 main">
+        <div class="Content">
+            <div class="Post">
+                <div class="Post Left">
+
+                    <a class='UserTag' href='/User/<%= Post.user.username%>'><img class="Profile" src="https://www.w3schools.com/images/w3schools_green.jpg">
+                    </a>
+                    <h5 class="threadtitle">
+                        <%= Post.title%>
+                    </h5>
+                </div>
+
+                <div class="Post Middle">
+                    <a class='UserTag' href='/User/<%= Post.user.username%>'>
+                        <h5>
+                            <%=Post.user.name.firstname%>
+                            <%=Post.user.name.lastname%>
+                        </h5>
+                    </a>
+
+                </div>
+                <div class="Post Right">
+                    <a class='UserTag' href='/User/<%= Post.user.username%>'>
+                        <h5>
+                            <%= Post.user.username%>
+                        </h5>
+                    </a>
+                </div>
+                <div class="Content Body">
+                    <p class="postcontent">
+                        <%- Post.body%>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="PostFooter">
+
+            <i class="fa fa-reply"></i>
+            <i class="fa fa-heart"></i>
+            <i class="fa fa-trash-o"></i>
+            <i class="fa fa-flag-o"></i>
+            <i class="fa fa-share-alt"></i>
+            <i class="fa fa-send-o"></i>
+
+        </div>
+
+        <div class="Spacer">
+            <h5 class="comments">Comments <i class="fa fa-angle-down"></i> </h5>
+
+        </div>
+        <% for (let i = 0; i < Comments.length; i++) {%>
+        <div class="Comment">
+            <div class="CommentHeader">
+                <div class="CommentHeader LeftWhite">
+                    <a href = '/user/<%=Comments[i].user.username%>' class = 'commentUser'>
+                        <h4 class="commentUser">
+                            <%=Comments[i].user.username%>
+                        </h4>
+                    </a>
+                </div>
+
+
+
+                <div class="Comment Body">
+                    <p class="commentparagraph">
+                        <%=Comments[i].text%>
+                    </p>
+                    <div class="PostFooter">
+                        <i class="fa fa-heart"></i>
+                        <i class="fa fa-trash-o"></i>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%}%>
+    </div>
+</div>
+<script>
+
+
+
+

@@ -27,17 +27,20 @@
     </div>
 
 </div>
-<div class='container'>
+<div class='container Post-List'>
+    <h2>Posts</h2>
     <div class="jumbotron">
-
+        
         <%for (let i = 0; i < Posts.length; i++) {%>
         <div class="media post">
             <div class="media-body">
-                <h4>
+                <h4><b>
                     <%=Posts[i].thread%>
+                    </b>
                 </h4>
-                <h5>
+                <h5><i>
                     <%=Posts[i].title%>
+                    </i>
                 </h5>
                 <h5>
                     <%=Posts[i].body%>
@@ -51,11 +54,19 @@
     .container {
         margin-top: 90px;
         margin-left: 200px;
-
     }
-
+    .Post-List{
+        margin-top: 25px;
+    }
+    .media-body{
+        padding-left: 5px;
+    }
     .post {
-        background: darkgray;
+        background: #00B2A9;
+        padding-left:15px;
+        border-radius:5px;
     }
-
+    .jumbotron{
+        background: #E43C40;
+    }
 </style>

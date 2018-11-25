@@ -56,9 +56,12 @@
         background:rgb(228,60,64,.1);
     }
     .navbar-inverse {
-    background-color: rgb(228,60,64,.6);
+    background-color: rgb(228,60,64,1);
     border-color: #FFFFFF;
 }
+    .active{
+        font-size:18px;
+    }
 </style>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -82,7 +85,8 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/User/<%=Username%>" class='right-side'><span class="glyphicon glyphicon-user"></span>
-                    <b><%=Username%></b></a></li>
+                    <b>
+                        <%=Username%></b></a></li>
             <li><a href="/SignOut" class="right-side"><b>Signout</b></a></li>
         </ul>
     </div>
@@ -91,8 +95,9 @@
     <div class="row">
         <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">Recent Posts</a></li>
                 <li class="active"><a href="/CreatePost">Create Post</a></li>
+                <li class="active"><a href="#">Recent Posts</a></li>
+                <li class="active"><a href='/Thread'>Threads</a></li>
                 <div class="well">
                     <p>ADS</p>
                 </div>

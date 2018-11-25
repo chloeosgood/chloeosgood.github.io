@@ -1,104 +1,114 @@
-div.Thread {
-    display: table;
-    width=350px;
-    table-layout: fixed;
+ .outer-color {
+     background: #00B2A9;
+     padding: 15px;
+     border-radius: 15px;
+ }
 
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    border-radius: 25px 25px 25px 25px;
-    background: rgb(228,60,64);
-    width: 90%;
-    height: 150px;
-    transition: .3s;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-decoration: none;
-    margin-bottom: 15px;
-    overflow: hidden;
-    
-}
- div.testclass{
-        margin-top: 75px;
-    }
-div.Thread:hover {
-    transition: .3s;
-    box-shadow: 0 4px 8px 0 rgba(0,178,169, .75), 0 6px 20px 0 rgba(0,178,169, .75);
-    border-radius: 5px 5px 5px 5px;
-}
+ div.Thread {
+     display: table;
+     table-layout: fixed;
 
-div.Thread:active {
-    background: rgba(0,178,169);
-}
+     border-style: solid;
+     border-color: black;
+     border-width: 1px;
+     border-radius: 25px 25px 25px 25px;
+     background: rgb(228, 60, 64);
+     width: 100%;
+     height: 150px;
+     transition: .3s;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     text-decoration: none;
+     margin-bottom: 15px;
+     overflow: hidden;
+     align-content: center;
+ }
 
-a.UserTag{
-    text-decoration: none;
-    color: black;
-}
+ div.testclass {
+     margin-top: 75px;
+ }
 
-div.Thread-Info {
-    display: table-cell;
-    border-radius: 15px;
-    text-align: center;
-    vertical-align: middle;
-    height: 150px;
-    border-radius: 0px;
-    overflow: hidden;
-}
+ div.Thread:hover {
+     transition: .3s;
+     box-shadow: 0 4px 8px 0 rgba(0, 178, 169, .75), 0 6px 20px 0 rgba(0, 178, 169, .75);
+     border-radius: 5px 5px 5px 5px;
+ }
 
-div.Left {
-    width: 15%;
-    border-right: 1px solid;
-}
+ div.Thread:active {
+     background: rgba(0, 178, 169);
+ }
 
-div.Left h4 {
-    padding: 0px;
-    font-weight: normal;
-}
+ a.UserTag {
+     text-decoration: none;
+     color: black;
+ }
 
-img.Profile {
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-}
+ div.Thread-Info {
+     display: table-cell;
+     border-radius: 15px;
+     text-align: center;
+     vertical-align: middle;
+     height: 150px;
+     border-radius: 0px;
+     overflow: hidden;
+ }
 
-div.Middle {
-    width: 95%;
-    display: inline-block;
-    vertical-align: top;
-    text-align: left;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(180deg,#000 60%,transparent);
-}
-div.Middle h3 {
-    padding-left: 5px;
-}
+ div.Left {
+     width: 15%;
+     border-right: 1px solid;
+ }
+
+ div.Left h4 {
+     padding: 0px;
+     font-weight: normal;
+ }
+
+ img.Profile {
+     border-radius: 50%;
+     height: 50px;
+     width: 50px;
+ }
+
+ div.Middle {
+     width: 95%;
+     display: inline-block;
+     vertical-align: top;
+     text-align: left;
+     overflow: hidden;
+     -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+ }
+
+ div.Middle h3 {
+     padding-left: 5px;
+ }
 
 
-div.Middle h4 {
-    font-weight: normal;
-    padding-left: 15px;
-}
+ div.Middle h4 {
+     font-weight: normal;
+     padding-left: 15px;
+ }
 
-div.Right {
-    display: table-cell;
-    width: 10%;
-    border-left: 1px solid;
-}
+ div.Right {
+     display: table-cell;
+     width: 10%;
+     border-left: 1px solid;
+ }
 
-div.Likes{
-    display: block;
-}
+ div.Likes {
+     display: block;
+ }
 
-i.info {
-    padding-right: 5px;
-    padding-bottom: 15px;
-}
-h5{
-    display: inline;
-}
-.PostBody{
-    display:block;
-    overflow: hidden;
-    padding-left: 35px;
-    word-break: break-word;
-}
+ i.info {
+     padding-right: 5px;
+     padding-bottom: 15px;
+ }
+
+ h5 {
+     display: inline;
+ }
+
+ .PostBody {
+     display: block;
+     overflow: hidden;
+     padding-left: 35px;
+     word-break: break-word;
+ }

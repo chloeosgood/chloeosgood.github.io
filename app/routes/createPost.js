@@ -23,7 +23,7 @@ router.get('/CreatePost', function (req, res) {
 });
 
 router.post('/CreatePost', function (req, res, next) {
-    console.log(req.body);
+    //console.log(req.body);
 
     if (req.session.user) {
         User.findOne({
@@ -39,7 +39,7 @@ router.post('/CreatePost', function (req, res, next) {
             }, function (err, post) {
                 if (err) return next(err);
 
-                console.log(post);
+                //console.log(post);
                 // res.render('CreatePost', {
                 //     pageTitle: "CreatePost",
                 //     pageID: "Create Post",

@@ -20,7 +20,7 @@ router.get('/SignUp', function (req, res) {
 
 router.post('/SignUp', function (req, res) {
 
-    console.log(req.body);
+    //console.log(req.body);
     if ((req.body.password_1 != req.body.password_2)) {
         res.render('SignUp', {
             pageTitle: "SignUp",
@@ -77,8 +77,8 @@ router.post('/SignUp', function (req, res) {
             if (err) {
                 console.log(err);
             } else {
-                console.log('User Registered');
-                console.log(req.body.classification);
+                //console.log('User Registered');
+                //console.log(req.body.classification);
             }
         });
         

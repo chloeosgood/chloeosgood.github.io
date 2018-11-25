@@ -2,47 +2,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="row testclass">
     <div class="col-sm-9 col-md-9 main">
-        <% for (let i = 0; i < Threads.length; i++) {%>
-        <div class="Thread">
-            <div class="Thread-Info Left">
-                <a href='/User/<%=Threads[i].recentUser.username%>' class='UserTag'>
-                    <h4>
-                        <%=Threads[i].recentUser.name.firstname%>
-                        <%=Threads[i].recentUser.name.lastname%>
-                    </h4>
-                </a>
-                <a href='/User/<%=Threads[i].recentUser.username%>' class='UserTag'><img class="Profile" src="https://www.w3schools.com/images/w3schools_green.jpg"></a>
-                <a href='/User/<%=Threads[i].recentUser.username%>' class='UserTag'>
-                    <h4>
-                        <%=Threads[i].recentUser.username%>
-                    </h4>
-                </a>
-            </div>
+        <div class='outer-color'>
+            <% for (let i = 0; i < Threads.length; i++) {%>
+            <a href='/Thread/<%=Threads[i].name%>' class='UserTag'>
+                <div class="Thread">
+                    <div class="Thread-Info Left">
+                        <h4>
+                            <%=Threads[i].count%>
+                            Post(s)
+                        </h4>
+                    </div>
 
-            <div class="Thread-Info Middle">
-                <a href='/Thread/<%=Threads[i].name%>' class='UserTag'>
-                    <h3>
-                        <%=Threads[i].name%>
-                    </h3>
-                </a>
-            </div>
+                    <div class="Thread-Info Middle">
 
-            <div class="Thread-Info Right">
-                <div class="Likes">
-                    <i class="fa fa-heart info"></i>
-                    <h5>
-                        <%=Threads[i].recentPost.upvote%>
-                    </h5>
+                        <h3>
+                            <b>
+                                <%=Threads[i].name%>
+                            </b>
+                        </h3>
+
+                    </div>
+
                 </div>
-                <div class='Likes'>
-                    <i class="fa fa-trash-o info"></i>
-                    <h5>
-                        <%=Threads[i].recentPost.downvote%>
-                    </h5>
-                </div>
-            </div>
+            </a>
+            <%}%>
         </div>
-        <%}%>
-
     </div>
 </div>

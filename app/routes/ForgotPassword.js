@@ -19,7 +19,7 @@ router.post('/ForgotPassword', function (req, res, next) {
     if (req.body.Button == 'Reset') {
         mailer(req.body.email, function (err, msgId) {
             if (err) return next(err);
-            console.log(msgId);
+            //console.log(msgId);
 
             res.render('ValidateResetPassword', {
                 pageTitle: "Validate Reset Password",
