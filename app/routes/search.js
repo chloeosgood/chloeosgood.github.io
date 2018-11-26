@@ -30,9 +30,9 @@ router.get('/Search/:search_key', function (req, res, next) {
     var findPost = true;
     var findComment = true;
 
-    var SearchResultsThread;
-    var SearchResultsUser;
-    var SearchResultsPost;
+    var SearchResultsThread = [];
+    var SearchResultsUser = [];
+    var SearchResultsPost = [];
 
     if (req.session.user) {
 
@@ -66,8 +66,8 @@ router.get('/Search/:search_key', function (req, res, next) {
                 if (err) return next(err);
 
                 console.log("\nPost Search Results\n");
-                console.log(search_results_thread);
-                SearchResultsThread = search_results_thread;
+                console.log(search_results_post);
+                SearchResultsThread = search_results_post;
             });
         }
 
