@@ -33,17 +33,8 @@ router.get('/Search/:search_key', function (req, res, next) {
     var SearchResultsThread;
     var SearchResultsUser;
     var SearchResultsPost;
-    var SearchResultsComment;
-
 
     if (req.session.user) {
-
-        if(req.params.search_key == "")
-        {
-            console.log("Empty Search");
-            //Give search error we need you to put in a variable
-            return;
-        }
 
         console.log("\nSearch Key:" + req.params.search_key);
 
@@ -68,18 +59,18 @@ router.get('/Search/:search_key', function (req, res, next) {
                 SearchResultsUser = search_results_user;
             });
         }
-/*
+
         if(findPost)
         {
             Post.find({title: req.params.search_key},function(err, search_results_post) {
                 if (err) return next(err);
 
-                console.log("\nThread Search Results\n");
+                console.log("\nPost Search Results\n");
                 console.log(search_results_thread);
                 SearchResultsThread = search_results_thread;
             });
         }
-*/
+
         res.render('ShowSearch', {
             pageTitle: "ShowSearch",
             pageID: "Search Page",
