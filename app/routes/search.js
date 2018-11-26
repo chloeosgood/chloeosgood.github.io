@@ -86,8 +86,8 @@ router.get('/Search/:search_key', function (req, res, next) {
             Location: "../",
             Username: req.session.user,
             SearchResultsThread: SearchResultsThread,
-            SearchResultsUser: search_results_user,
-            SearchResultsPost: search_results_post
+            SearchResultsUser: SearchResultsUser,
+            SearchResultsPost: SearchResultsPost
         });
 
     } else {
