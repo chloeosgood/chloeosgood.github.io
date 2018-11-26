@@ -4,7 +4,6 @@ var router = express.Router();
 const Thread = require('../models/thread.js');
 const Post = require('../models/post.js');
 const User = require('../models/user.js');
-const Comment = require('../models/comment.js');
 
 //Search
 router.get('/Search',function(req,res,next) {
@@ -24,10 +23,10 @@ router.get('/Search',function(req,res,next) {
     }
 });
 
-router.get('/Search/:search_key/:findingthread/:findinguser/:findingpost', function (req, res, next) {
-    var findThread = req.params.findingthread;
-    var findUser = req.params.findinguser;
-    var findPost = req.params.findingpost;
+router.get('/Search/:search_key', function (req, res, next) {
+    var findThread = true;
+    var findUser = true;
+    var findPost = true;
 
     var SearchResultsThread = [];
     var SearchResultsUser = [];
@@ -35,14 +34,14 @@ router.get('/Search/:search_key/:findingthread/:findinguser/:findingpost', funct
 
     if (req.session.user) {
 
-        console.log("\nSearch Key:" + req.params.search_key);
+        console.log("Search Key:" + req.params.search_key + "\n");
 
         if(findThread)
         {
             Thread.find({name: req.params.search_key},function(err, search_results_thread) {
                 if (err) return next(err);
 
-                console.log("\nThread Search Results\n");
+                console.log("Thread Search Results\n");
                 console.log(search_results_thread);
                 SearchResultsThread = search_results_thread;
             });
@@ -53,7 +52,7 @@ router.get('/Search/:search_key/:findingthread/:findinguser/:findingpost', funct
             User.find({username: req.params.search_key},function(err, search_results_user) {
                 if (err) return next(err);
 
-                console.log("\nUser Search Results\n");
+                console.log("User Search Results\n");
                 console.log(search_results_user);
                 SearchResultsUser = search_results_user;
             });
@@ -64,7 +63,7 @@ router.get('/Search/:search_key/:findingthread/:findinguser/:findingpost', funct
             Post.find({title: req.params.search_key},function(err, search_results_post) {
                 if (err) return next(err);
 
-                console.log("\nPost Search Results\n");
+                console.log("Post Search Results\n");
                 console.log(search_results_post);
                 SearchResultsThread = search_results_post;
             });
