@@ -24,11 +24,10 @@ router.get('/Search',function(req,res,next) {
     }
 });
 
-router.get('/Search/:search_key', function (req, res, next) {
-    var findThread = true;
-    var findUser = true;
-    var findPost = true;
-    var findComment = true;
+router.get('/Search/:search_key/:findingthread/:findinguser/:findingpost', function (req, res, next) {
+    var findThread = req.params.findingthread;
+    var findUser = req.params.findinguser;
+    var findPost = req.params.findingpost;
 
     var SearchResultsThread = [];
     var SearchResultsUser = [];
