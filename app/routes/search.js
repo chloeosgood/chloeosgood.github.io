@@ -82,7 +82,7 @@ router.get('/Search/:search_key', function (req, res, next) {
         });
 
     } else {
-        req.session.redirect = '/ShowSearch/' + req.params.search_key;
+        req.session.redirect = '/Search/' + req.params.search_key;
         res.redirect('/login');
     }
 });
