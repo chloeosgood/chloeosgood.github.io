@@ -4,7 +4,8 @@
     "description": "Software 2 project ",
     "main": "app/app.js",
     "scripts": {
-        "start": "nodemon app/app.js"
+        "start": "nodemon app/app.js",
+        "prestart": "npm rebuild bcrypt --update-binary"
     },
     "author": "Matthew Hendrick",
     "license": "ISC",
