@@ -17,7 +17,7 @@ module.exports = () => {
         console.log('DB Opened');
         //clear();
         //loadSample();
-        //testDb();
+        // testDb();
     });
 };
 
@@ -154,6 +154,12 @@ const testDb = () => {
     const Thread = require('../models/thread.js');
     const Post = require('../models/post.js');
     const Comment = require('../models/comment.js');
+
+    Post.recentPosts(function(err, posts) {
+        console.log(err);
+        
+        console.log(posts);
+    });
 };
 
 // Samples
