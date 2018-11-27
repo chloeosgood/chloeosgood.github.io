@@ -641,6 +641,7 @@ input {
 .input-group {
     position: relative;
     margin: 0;
+    margin-left:17px;
 }
 
 .label {

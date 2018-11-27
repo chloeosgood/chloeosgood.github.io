@@ -1,6 +1,6 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="dist/css/threadinfo.css" rel="stylesheet" media="all">
+    <link href="../../dist/css/threadinfo.css" rel="stylesheet" media="all">
 </head>
 
 <div class="container">
@@ -29,23 +29,25 @@
 </div>
 <div class='container Post-List'>
     <h2>Posts</h2>
-    <div class="jumbotron">
-        
+    <div class="jumbotron UserTag">
+
         <%for (let i = 0; i < Posts.length; i++) {%>
-        <div class="media post">
-            <div class="media-body">
-                <h4><b>
-                    <%=Posts[i].thread%>
-                    </b>
-                </h4>
-                <h5><i>
-                    <%=Posts[i].title%>
-                    </i>
-                </h5>
-                <h5>
-                    <%-Posts[i].body%>
-                </h5>
-            </div>
+        <div class="media post UserTag">
+            <a href = "/Thread/<%=Posts[i].thread%>/<%=Posts[i]._id%>" class ='UserTag'>
+                <div class="media-body gradient UserTag">
+                    <h4><b>
+                            <%=Posts[i].thread%>
+                        </b>
+                    </h4>
+                    <h5 class="title UserTag"><i>
+                            <%=Posts[i].title%>
+                        </i>
+                    </h5>
+                    <h5 class="body UserTag">
+                        <%-Posts[i].body%>
+                    </h5>
+                </div>
+            </a>
         </div>
         <%}%>
     </div>
@@ -55,18 +57,52 @@
         margin-top: 90px;
         margin-left: 200px;
     }
-    .Post-List{
+
+    .Post-List {
         margin-top: 25px;
+        overflow: hidden;
+
     }
-    .media-body{
+
+    .media-body {
         padding-left: 5px;
+        height: 150px;
+        overflow: hidden;
     }
+
+    .gradient {
+
+        -webkit-mask-image: linear-gradient(180deg, #000 75%, transparent);
+    }
+
     .post {
-        background: #00B2A9;
-        padding-left:15px;
-        border-radius:5px;
+        background: white;
+        padding-left: 15px;
+        border-radius: 5px;
+        height: 150px;
+        overflow: hidden;
+        border:#E43C40;
+        border-width:2px;
+        border-style:solid;
     }
-    .jumbotron{
-        background: #E43C40;
+
+    .jumbotron {
+        background: #00B2A9;
+        
+    }
+
+    .body {
+        padding-left: 20px;
+    }
+
+    .title {
+        padding-left: 10px;
+    }
+    .UserTag{
+        text-decoration: none;
+    }
+    h4,
+    h5{
+        color:black;
     }
 </style>
