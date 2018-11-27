@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const crypto = require('crypto');
 
 //encryption vars
-var bcrypt = require('bcrypt'),
+var bcrypt = require('bcryptjs'),
 SALT_WORK_FACTOR = 10;
 
 const NameSchema = new mongoose.Schema({

@@ -7,6 +7,31 @@ const Post = require('../models/post.js');
 const Comment = require('../models/comment.js');
 const User = require('../models/user.js');
 
+router.get('/RecentPosts', function(req, res, next) {
+
+    req.session.user = 'jdoe';
+
+    if (req.session.user) {
+
+        Post.recentPosts(function (err, posts) {
+            if (err) next(err);
+
+            // console.log(posts.toString());
+
+            res.render('RecentPosts', {
+                pageTitle: "RecentPosts",
+                pageID: "RecentPosts Page",
+                Location: "../",
+                Username: req.session.user,
+                RecentPosts: posts
+            });
+        });
+    } else {
+        req.session.redirect = '/RecentPosts';
+        res.redirect('/login');
+    }
+});
+
 router.get('/Thread', function (req, res) {
     if (req.session.user) {
         //i would like this to have a total of how many posts that are currently
