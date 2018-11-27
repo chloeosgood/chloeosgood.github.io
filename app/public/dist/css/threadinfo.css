@@ -2,11 +2,52 @@ div.testclass {
     margin-top: 60px;
 }
 
-i:hover {
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 300px;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    padding-top: 30px;
+    border: 1px solid #888;
+    width: 65%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+i2:hover {
     color: lightgray;
 }
 
-i.button {}
+i2.button {}
 
 h4:hover {
     color: lightgray;
@@ -16,7 +57,7 @@ img:hover {
     color: lightgray;
 }
 
-i:active {
+i2:active {
     color: #00B2A9;
     shadow: 0 5px #666;
 
@@ -35,7 +76,7 @@ h5:active {
 
 }
 
-i {
+i2 {
     color: white;
     padding-right: 15px;
 }

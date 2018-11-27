@@ -37,6 +37,12 @@
     
 }
 
+.container-modal{
+    margin-top: 0px;
+    margin-left: 0px;
+    
+}
+
 input[type="text"]{
     height:30px;
 }

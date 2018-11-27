@@ -4,7 +4,7 @@ var app = express();
 var http = require('http');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-
+var bodyParser = require('body-parser');
 
 
 var server = http.createServer();
@@ -23,6 +23,8 @@ app.use(session({
         expires: 600000
     }
 }));
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('app/public'));
 app.use(require('./routes/index'));
