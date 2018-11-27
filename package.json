@@ -9,6 +9,7 @@
     "author": "Matthew Hendrick",
     "license": "ISC",
     "dependencies": {
+        "bcrypt": "^3.0.2",
         "body-parser": "^1.18.3",
         "bootstrap": "^3.3.7",
         "connect": "^3.6.6",

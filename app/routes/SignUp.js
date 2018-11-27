@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 const User = require('../models/user.js');
+
+
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({
@@ -81,7 +84,7 @@ router.post('/SignUp', function (req, res) {
                 //console.log(req.body.classification);
             }
         });
-        
+
 
 
         return res.render('login', {
