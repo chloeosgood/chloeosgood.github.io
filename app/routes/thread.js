@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
 
 const Thread = require('../models/thread.js');
 const Post = require('../models/post.js');
 const Comment = require('../models/comment.js');
+const User = require('../models/user.js');
 
 router.get('/Thread', function (req, res) {
     if (req.session.user) {
@@ -31,7 +33,7 @@ router.get('/Thread', function (req, res) {
 
 });
 
-
+module.exports = router;
 router.get('/Thread/:Threadname', function (req, res, next) {
     if (req.session.user) {
         //should pass through all posts that belong to a thread with name req.params.Threadname
@@ -53,7 +55,7 @@ router.get('/Thread/:Threadname', function (req, res, next) {
 
     }
 });
-
+module.exports = router;
 
 router.get('/Thread/:Threadname/:postId', function (req, res, next) {
     if (req.session.user) {
@@ -77,7 +79,8 @@ router.get('/Thread/:Threadname/:postId', function (req, res, next) {
                             Location: "../../",
                             Username: req.session.user,
                             Post: post,
-                            Comments: comments
+                            Comments: comments,
+                            Data: "Type comment..."
                         });
                     });
             });
@@ -87,7 +90,7 @@ router.get('/Thread/:Threadname/:postId', function (req, res, next) {
 
     }
 });
-
+module.exports = router;
 /*router.get('/Thread/:postId/addComment', function (req, res, next) {
     if (req.session.user) {
         // TODO
@@ -95,28 +98,29 @@ router.get('/Thread/:Threadname/:postId', function (req, res, next) {
         req.session.redirect = `/Thread/${req.params.postId}/addComment`;
         res.redirect('/login');
     }
-});
+});*/
 
-router.post('/Thread/:postId/addComment', function (req, res, next) {
+router.post('/Thread/:Threadname/:postId', function (req, res, next) {
     if (req.session.user) {
         User.findOne({
             username: req.session.user
         }, function (err, user) {
+            console.log(user);
             if (err) return next(err);
 
             Comment.create({
-                user: req.session.user._id,
+                user: user._id,
                 post: req.params.postId,
-                text: text
+                text: req.body.post
             }, function (err, comment) {
                 if (err) return next(err);
 
-                console.log(comment);
+                res.redirect('/Thread/'+req.params.Threadname+'/'+req.params.postId);
             });
         });
     } else {
         res.redirect('/login');
     }
-});*/
+});
 
 module.exports = router;
