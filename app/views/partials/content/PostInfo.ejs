@@ -236,13 +236,12 @@
         if (liked == 'False') {
             var id = document.getElementById('PostID').innerHTML.trim();
             var mes = '';
-            if(disliked == 'True')
-                {
-                    mes = 'Disliked';
-                }
+            if (disliked == 'True') {
+                mes = 'Disliked';
+            }
             $.post('http://localhost:5656/Thread/Likes', {
                 data: {
-                    message:mes,
+                    message: mes,
                     PostID: id
                 }
             }).done(function(data) {
@@ -251,18 +250,31 @@
             });
             liked = 'True';
             disliked = 'False';
+        } else if (liked == 'True') {
+            var id = document.getElementById('PostID').innerHTML.trim();
+            var mes = 'Unlike';
+            $.post('http://localhost:5656/Thread/Likes', {
+                data: {
+                    message: mes,
+                    PostID: id
+                }
+            }).done(function(data) {
+                like.innerHTML = " " + data.upvote;
+                dislike.innerHTML = " " + data.downvote;
+            });
+            liked = 'False';
+            disliked = 'False';
         }
 
-    }    
+    }
     dislike.onclick = function() {
 
         if (disliked == 'False') {
             var id = document.getElementById('PostID').innerHTML.trim();
             var mes = '';
-            if(liked == 'True')
-                {
-                    mes = 'Liked';
-                }
+            if (liked == 'True') {
+                mes = 'Liked';
+            }
             $.post('http://localhost:5656/Thread/Dislike', {
                 data: {
                     message: mes,
