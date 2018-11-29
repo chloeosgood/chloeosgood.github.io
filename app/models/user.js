@@ -1,6 +1,5 @@
 'use strict'
 const mongoose = require('mongoose');
-const crypto = require('crypto');
 
 //encryption vars
 var bcrypt = require('bcryptjs'),
@@ -16,6 +15,19 @@ const NameSchema = new mongoose.Schema({
     type: String,
     required: true
     // maxlength: 10
+  }
+});
+
+const VoteSchema = new mongoose.Schema({
+  instance: {
+    type: mongoose.Schema.Types.ObjectId
+  },
+  instanceType: {
+    type: String
+  },
+  like: {
+    type: Boolean,
+    default: true
   }
 });
 
@@ -55,7 +67,8 @@ const UserSchema = new mongoose.Schema({
       type: Number,
       enum: [0, 1],
       default: 0
-    }
+    },
+    votedList: [VoteSchema]
 });
 
 UserSchema.path('name').validate(function(name) {
