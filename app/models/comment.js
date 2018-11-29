@@ -16,11 +16,11 @@ const CommentSchema = new mongoose.Schema({
     upvote: {
         type: Number,
         default: 0
-      },
-      downvote: {
+    },
+    downvote: {
         type: Number,
         default: 0
-      },
+    },
     createAt: {
         type: Date,
         default: Date.now
