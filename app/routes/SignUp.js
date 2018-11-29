@@ -32,7 +32,7 @@ router.post('/SignUp', function (req, res) {
         User.findOne({
             username: req.body.data.username
         }, function (err, count) {
-            console.log(count);
+            //console.log(count);
             if (count != null) {
                 //uname exists
                 res.send('Username');
@@ -40,7 +40,7 @@ router.post('/SignUp', function (req, res) {
                 User.findOne({
                     email: req.body.data.email
                 }, function (err, count) {
-                    console.log(count);
+                    //console.log(count);
                     if (count != null) {
                         //email exists
                         res.send('Email');
