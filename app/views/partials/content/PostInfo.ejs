@@ -29,7 +29,7 @@
                 <div class="Post">
                     <div class="Post Middle">
 
-                        <a class='UserTag' href='/User/<%= Post.user.username%>'><img class="Profile" src="https://www.w3schools.com/images/w3schools_green.jpg">
+                        <a class='UserTag' href='/User/<%= Post.user.username%>'><img class="Profile" src="/Users/ProfilePictures/human_avatar.jpg">
                         </a>
 
                     </div>
@@ -213,6 +213,9 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+    }
+    img.Profile{
+        border:2px solid black;
     }
 
 </style>

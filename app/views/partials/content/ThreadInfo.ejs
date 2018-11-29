@@ -12,7 +12,7 @@
                             <%=Posts[i].user.name.lastname%>
                         </h4>
                     </a>
-                    <a href='/User/<%=Posts[i].user.username%>' class='UserTag'><img class="Profile" src="https://www.w3schools.com/images/w3schools_green.jpg"></a>
+                    <a href='/User/<%=Posts[i].user.username%>' class='UserTag'><img class="Profile" src="/Users/ProfilePictures/human_avatar.jpg"></a>
                     <a href='/User/<%=Posts[i].user.username%>' class='UserTag'>
                         <h4>
                             <%=Posts[i].user.username%>
@@ -57,3 +57,8 @@
         </div>
     </div>
 </div>
+<style>
+img.Profile{
+        border:2px solid black;
+    }
+</style>
