@@ -116,14 +116,6 @@ router.get('/Thread/:Threadname/:postId', function (req, res, next) {
     }
 });
 module.exports = router;
-/*router.get('/Thread/:postId/addComment', function (req, res, next) {
-    if (req.session.user) {
-        // TODO
-    } else {
-        req.session.redirect = `/Thread/${req.params.postId}/addComment`;
-        res.redirect('/login');
-    }
-});*/
 
 router.post('/Thread/:Threadname/:postId', function (req, res, next) {
     if (req.session.user) {
