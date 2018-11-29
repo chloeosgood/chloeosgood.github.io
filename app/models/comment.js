@@ -13,6 +13,14 @@ const CommentSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    upvote: {
+        type: Number,
+        default: 0
+      },
+      downvote: {
+        type: Number,
+        default: 0
+      },
     createAt: {
         type: Date,
         default: Date.now

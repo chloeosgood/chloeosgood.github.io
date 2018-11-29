@@ -29,7 +29,7 @@ div.testclass {
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: black;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -37,7 +37,7 @@ div.testclass {
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: red;
     text-decoration: none;
     cursor: pointer;
 }
@@ -209,7 +209,9 @@ div.Comment {
 }
 
 div.Left {
-    width: 5%;
+    display:table;
+    width: 50%;
+    height: 25px;
     background-color: #00B2A9;
     border-style: solid;
     border-color: black;
@@ -221,6 +223,7 @@ div.Left {
 }
 div.Middle {
     width: 15%;
+    height: 25px;
     background-color: #00B2A9;
     border-style: solid;
     border-color: black;
@@ -244,7 +247,9 @@ div.LeftWhite {
 }
 
 div.Right {
-    width: 50%;
+    padding-left: 15px;
+    width: 40%;
+    height: 25px;
     background-color: #00B2A9;
     border-style: solid;
     border-color: black;
