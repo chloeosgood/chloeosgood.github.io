@@ -27,14 +27,20 @@
      margin-top: 75px;
  }
 
+
  div.Thread:hover {
      transition: .3s;
      box-shadow: 0 4px 8px 0 rgba(0, 178, 169, .75), 0 6px 20px 0 rgba(0, 178, 169, .75);
      border-radius: 5px 5px 5px 5px;
  }
-
+ div.Middle:active,
  div.Thread:active {
-     background: rgba(0, 178, 169);
+     transition: 0s;
+     background: grey;
+ }
+div.Middle:active:after,
+ div.Thread:active:after {
+     transition: 0s;
  }
 
  a.UserTag {
@@ -75,8 +81,8 @@
      vertical-align: top;
      text-align: left;
      overflow: hidden;
-     -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
-     background: white;
+     
+     -webkit-mask-image: linear-gradient(180deg, #000 90%, transparent);
  }
 
  div.Middle h3 {
