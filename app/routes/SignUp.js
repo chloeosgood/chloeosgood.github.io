@@ -24,84 +24,61 @@ router.get('/SignUp', function (req, res) {
 router.post('/SignUp', function (req, res) {
 
     //console.log(req.body);
-    if ((req.body.password_1 != req.body.password_2)) {
-        res.render('SignUp', {
-            pageTitle: "SignUp",
-            pageID: "SignUp",
-            Location: "../",
-            error: '*Passwords do not match*'
-        })
+    if ((req.body.data.pass1 != req.body.data.pass2)) {
+        res.send('Password');
     } else {
         var hasval = false;
         //check username
-        /*User.findOne({
-            username: req.body.username
+        User.findOne({
+            username: req.body.data.username
         }, function (err, count) {
             console.log(count);
             if (count != null) {
                 //uname exists
-                hasval = true;
-                res.render('SignUp', {
-                    pageTitle: "SignUp",
-                    pageID: "SignUp",
-                    Location: "../",
-                    error: '*Username already Exists*'
+                res.send('Username');
+            } else {
+                User.findOne({
+                    email: req.body.data.email
+                }, function (err, count) {
+                    console.log(count);
+                    if (count != null) {
+                        //email exists
+                        res.send('Email');
+                    } else {
+                        User.create({
+                            name: {
+                                firstname: req.body.data.firstname,
+                                lastname: req.body.data.lastname,
+                            },
+                            username: req.body.data.username,
+                            email: req.body.data.email,
+                            password: req.body.data.pass2,
+                            classification: req.body.data.classification,
+                            major: req.body.data.major,
+                            avatar: '',
+                            authority: 0 //set to 0 by default
+                        }, function (err, user) {
+                            //console.log(user)
+                            if (err) {
+                                console.log(err);
+                                res.send('error');
+                            } else {
+                                res.send('Registered');
+                                console.log('User Registered');
+                                
+                                //console.log(req.body.classification);
+                            }
+                        });
+                    }
                 });
-
             }
         });
 
         //check email exists
-        User.findOne({
-            email: req.body.email
-        }, function (err, count) {
-            console.log(count);
-            if (count != null) {
-                //email exists
-                hasval = true;
-                res.render('SignUp', {
-                    pageTitle: "SignUp",
-                    pageID: "SignUp",
-                    Location: "../",
-                    error: '*Email already Exists*'
-                });
 
-            }
-        });*/
 
         if (hasval == false) {
-            User.create({
-                name: {
-                    firstname: req.body.first_name,
-                    lastname: req.body.last_name,
-                },
-                username: req.body.username,
-                email: req.body.email,
-                password: req.body.password_1,
-                classification: req.body.classification,
-                major: req.body.major,
-                avatar: '',
-                authority: 0 //set to 0 by default
-            }, function (err, user) {
-                //console.log(user)
-                if (err) {
-                    res.render('SignUp', {
-                        pageTitle: "SignUp",
-                        pageID: "SignUp",
-                        Location: "../",
-                        error: '*Email or username already Exists*'
-                    });
-                } else {
-                    res.render('login', {
-                        pageTitle: "login",
-                        pageID: "login",
-                        Location: "../",
-                        error: 'Account Created. Please Log in With New Account'
-                    });
-                    console.log('User Registered');
-                    //console.log(req.body.classification);
-                }
-            });
+
         }
     }
 });

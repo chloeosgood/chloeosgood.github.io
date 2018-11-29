@@ -13,7 +13,7 @@
 
     <!-- Icons font CSS-->
     <link href="dist/SignUpFiles/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-   
+
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
@@ -40,13 +40,13 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="first_name" required>
+                                            <input class="input--style-5" type="text" name="first_name" id='firstname' required>
                                             <label class="label--desc">first name</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="last_name" required>
+                                            <input class="input--style-5" type="text" name="last_name" id='lastname' required>
                                             <label class="label--desc">last name</label>
                                         </div>
                                     </div>
@@ -59,13 +59,13 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="username" required>
+                                            <input class="input--style-5" type="text" name="username" id='username' required>
                                             <label class="label--desc">User Name</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="email" name="email" required>
+                                            <input class="input--style-5" type="email" name="email" id='email' required>
                                             <label class="label--desc">Email</label>
                                         </div>
                                     </div>
@@ -97,14 +97,14 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="major" required>
+                                            <input class="input--style-5" type="text" name="major" id='major' required>
                                             <label class="label--desc">Major</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group">
                                             <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="classification" required>
+                                                <select name="classification" id='classification' required>
                                                     <option value="">Classification</option>
                                                     <option value="Freshman">Freshman</option>
                                                     <option value="Sophomore">Sophomore</option>
@@ -143,7 +143,47 @@
 
     <!-- Main JS-->
     <script src="dist/SignUpFiles/js/global.js"></script>
+    <script>
+        $("form").submit(function(event) {
+            console.log('stopped!');
+            event.preventDefault();
+            var pass = document.getElementById("password").value;
+            var pass2 = document.getElementById("password_2").value;
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var firstname = document.getElementById("firstname").value;
+            var lastname = document.getElementById("lastname").value;
+            var major = document.getElementById("major").value;
+            var classification = document.getElementById("classification").value;
+            $.post('http://localhost:5656/Signup', {
+                data: {
+                    pass1: pass,
+                    pass2: pass2,
+                    username: username,
+                    email: email,
+                    firstname: firstname,
+                    lastname: lastname,
+                    major: major,
+                    classification: classification
+                }
+            }).done(function(data) {
+                if (data == 'error')
+                    alert('Internal Error Please Try Again Later');
+                else if (data == 'Username')
+                    alert('Username is already taken');
+                else if (data == 'Email')
+                    alert('Email Already in Use');
+                else if (data == 'Password')
+                    alert('Passwords do not Match');
+                else if (data == 'Registered') {
+                    alert('Account Created');
+                    window.location.href = "/Login";
+                }
+            });
 
+        });
+
+    </script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
