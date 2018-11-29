@@ -146,15 +146,19 @@ router.post('/Thread/Likes', function (req, res, next) {
 });
 router.post('/Thread/Dislike', function (req, res, next) {
     //console.log(req.body);
-    var inc = 0;
+    var lik = 0;
+    var dis = 1;
     if(req.body.data.message == 'Liked')
-        inc = -1;
+        lik = -1;
+    else if(req.body.data.message == 'Undislike')
+        dis = -1;
+    console.log(lik + " " + dis + " " + req.body.data.message);
     Post.findOneAndUpdate({
         _id: req.body.data.PostID
     }, {
         $inc: {
-            downvote: 1,
-            upvote: inc
+            downvote: dis,
+            upvote: lik
         }
     }, function (err, post) {
         if (err) next(err);

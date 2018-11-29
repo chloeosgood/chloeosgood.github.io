@@ -232,61 +232,56 @@
     var dislike = document.getElementById("PostDislike");
 
     like.onclick = function() {
-
+        var id = document.getElementById('PostID').innerHTML.trim();
+        var mes = '';
         if (liked == 'False') {
-            var id = document.getElementById('PostID').innerHTML.trim();
-            var mes = '';
             if (disliked == 'True') {
                 mes = 'Disliked';
             }
-            $.post('http://localhost:5656/Thread/Likes', {
-                data: {
-                    message: mes,
-                    PostID: id
-                }
-            }).done(function(data) {
-                like.innerHTML = " " + data.upvote;
-                dislike.innerHTML = " " + data.downvote;
-            });
             liked = 'True';
             disliked = 'False';
         } else if (liked == 'True') {
-            var id = document.getElementById('PostID').innerHTML.trim();
-            var mes = 'Unlike';
-            $.post('http://localhost:5656/Thread/Likes', {
-                data: {
-                    message: mes,
-                    PostID: id
-                }
-            }).done(function(data) {
-                like.innerHTML = " " + data.upvote;
-                dislike.innerHTML = " " + data.downvote;
-            });
+            mes = 'Unlike';
             liked = 'False';
             disliked = 'False';
         }
+        $.post('http://localhost:5656/Thread/Likes', {
+            data: {
+                message: mes,
+                PostID: id
+            }
+        }).done(function(data) {
+            like.innerHTML = " " + data.upvote;
+            dislike.innerHTML = " " + data.downvote;
+        });
+
 
     }
     dislike.onclick = function() {
-
+        var id = document.getElementById('PostID').innerHTML.trim();
+        var mes = '';
         if (disliked == 'False') {
-            var id = document.getElementById('PostID').innerHTML.trim();
-            var mes = '';
+
             if (liked == 'True') {
                 mes = 'Liked';
             }
-            $.post('http://localhost:5656/Thread/Dislike', {
-                data: {
-                    message: mes,
-                    PostID: id
-                }
-            }).done(function(data) {
-                dislike.innerHTML = " " + data.downvote;
-                like.innerHTML = " " + data.upvote;
-            });
             disliked = 'True';
             liked = 'False';
+        } else if (disliked == 'True') {
+            mes = 'Undislike';
+            liked = 'False';
+            disliked = 'False';
         }
+        console.log(mes);
+        $.post('http://localhost:5656/Thread/Dislike', {
+            data: {
+                message: mes,
+                PostID: id
+            }
+        }).done(function(data) {
+            dislike.innerHTML = " " + data.downvote;
+            like.innerHTML = " " + data.upvote;
+        });
 
     }
 
