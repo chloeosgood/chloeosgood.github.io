@@ -31,7 +31,7 @@
 
                         <a class='UserTag' href='/User/<%= Post.user.username%>'><img class="Profile" src="https://www.w3schools.com/images/w3schools_green.jpg">
                         </a>
-                        
+
                     </div>
 
                     <div class="Post Right">
@@ -39,6 +39,9 @@
                             <h5>
                                 <%=Post.user.name.firstname%>
                                 <%=Post.user.name.lastname%>
+                            </h5>
+                            <h5 class='invisibleinput' id='PostID'>
+                                <%=Post._id%>
                             </h5>
                         </a>
 
@@ -50,21 +53,21 @@
                             </h5>
                         </a>
                     </div>
-                    
+
                     <div class="Post Left">
                         <h5 class="threadtitle">
-                                <%= Post.thread%>
-                            </h5>
-                    
+                            <%= Post.thread%>
+                        </h5>
+
                     </div>
-                    
+
                     <div class="Post Left">
                         <h5 class="threadtitle">
-                                <%= Post.title%>
-                            </h5>
-                    
+                            <%= Post.title%>
+                        </h5>
+
                     </div>
-                    
+
                     <div class="Content Body">
                         <p class="postcontent">
                             <%- Post.body%>
@@ -78,8 +81,12 @@
             <div class="PostFooter">
 
 
-                <i2 class="fa fa-hand-o-up"></i2>
-                <i2 class="fa fa-hand-o-down"></i2>
+                <i2 class="fa fa-hand-o-up unselectable" id='PostLike'>
+                    <%=Post.upvote%>
+                </i2>
+                <i2 class="fa fa-hand-o-down unselectable" id="PostDislike">
+                    <%=Post.downvote%>
+                </i2>
                 <i2 id="myBtn" class="fa fa-comment"></i2>
                 <div id="myModal" class="modal">
 
@@ -92,8 +99,8 @@
                                     <div class="pull-right">
 
                                     </div>
-                                    <h1 name = 'Comment'><small>Comment</small></h1>
-                                    
+                                    <h1 name='Comment'><small>Comment</small></h1>
+
                                     <div id="alerts"></div>
                                     <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
                                         <div class="btn-group">
@@ -160,44 +167,31 @@
                                     <button type="hidden" name='Button' value='Validate' onclick='buttonClicked()'>Submit</button>
                                     <input class='invisibleinput' type="text" name="post">
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
             <div class="Spacer">
                 <h5 class="comments">Comments</h5>
 
             </div>
             <% for (let i = 0; i < Comments.length; i++) {%>
             <div class="Comment">
-                
-                    
-                        
-                        <a href='/user/<%=Comments[i].user.username%>' class='commentUser'>
-                            <h4 class="commentUser">
-                                <%=Comments[i].user.username%>
-                            </h4>
-                        </a>
-                    
+                <a href='/user/<%=Comments[i].user.username%>' class='commentUser'>
+                    <h4 class="commentUser">
+                        <%=Comments[i].user.username%>
+                    </h4>
+                </a>
+                <p class="commentparagraph">
+                    <%-Comments[i].text%>
+                </p>
+                <div class="PostFooter">
+                    <i2 class="fa fa-hand-o-up"></i2>
+                    <i2 class="fa fa-hand-o-down"></i2>
 
-
-
-                    
-                        <p class="commentparagraph">
-                            <%-Comments[i].text%>
-                        </p>
-                        <div class="PostFooter">
-                            <i2 class="fa fa-hand-o-up"></i2>
-                            <i2 class="fa fa-hand-o-down"></i2>
-
-                        </div>
-                    
-                
+                </div>
             </div>
             <%}%>
         </div>
@@ -212,6 +206,15 @@
 
     }
 
+    .unselectable {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
 </style>
 <script>
     // Get the modal
@@ -222,6 +225,58 @@
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
+
+    var like = document.getElementById("PostLike");
+    var liked = 'False';
+    var disliked = 'False'
+    var dislike = document.getElementById("PostDislike");
+
+    like.onclick = function() {
+
+        if (liked == 'False') {
+            var id = document.getElementById('PostID').innerHTML.trim();
+            var mes = '';
+            if(disliked == 'True')
+                {
+                    mes = 'Disliked';
+                }
+            $.post('http://localhost:5656/Thread/Likes', {
+                data: {
+                    message:mes,
+                    PostID: id
+                }
+            }).done(function(data) {
+                like.innerHTML = " " + data.upvote;
+                dislike.innerHTML = " " + data.downvote;
+            });
+            liked = 'True';
+            disliked = 'False';
+        }
+
+    }    
+    dislike.onclick = function() {
+
+        if (disliked == 'False') {
+            var id = document.getElementById('PostID').innerHTML.trim();
+            var mes = '';
+            if(liked == 'True')
+                {
+                    mes = 'Liked';
+                }
+            $.post('http://localhost:5656/Thread/Dislike', {
+                data: {
+                    message: mes,
+                    PostID: id
+                }
+            }).done(function(data) {
+                dislike.innerHTML = " " + data.downvote;
+                like.innerHTML = " " + data.upvote;
+            });
+            disliked = 'True';
+            liked = 'False';
+        }
+
+    }
 
     // When the user clicks the button, open the modal 
     btn.onclick = function() {

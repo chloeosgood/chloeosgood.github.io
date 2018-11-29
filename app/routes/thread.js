@@ -7,7 +7,7 @@ const Post = require('../models/post.js');
 const Comment = require('../models/comment.js');
 const User = require('../models/user.js');
 
-router.get('/RecentPosts', function(req, res, next) {
+router.get('/RecentPosts', function (req, res, next) {
 
     req.session.user = 'jdoe';
 
@@ -62,7 +62,7 @@ module.exports = router;
 router.get('/Thread/:Threadname', function (req, res, next) {
     if (req.session.user) {
         //should pass through all posts that belong to a thread with name req.params.Threadname
-        Post.findByThread(req.params.Threadname, function(err, posts) {
+        Post.findByThread(req.params.Threadname, function (err, posts) {
             if (err) return next(err);
             //console.log(posts);
             res.render('Thread', {
@@ -73,8 +73,7 @@ router.get('/Thread/:Threadname', function (req, res, next) {
                 Posts: posts
             });
         });
-    }
-     else {
+    } else {
         req.session.redirect = `/Thread/${req.params.Threadname}`;
         res.redirect('/login');
 
@@ -115,6 +114,60 @@ router.get('/Thread/:Threadname/:postId', function (req, res, next) {
 
     }
 });
+
+router.post('/Thread/Likes', function (req, res, next) {
+    //console.log(req.body);
+    var inc = 0;
+    if(req.body.data.message == 'Disliked')
+        inc = -1;
+    Post.findOneAndUpdate({
+        _id: req.body.data.PostID
+    }, {
+        $inc: {
+            upvote: 1,
+            downvote: inc
+        }
+    }, function (err, post) {
+        if (err) next(err);
+        else {
+            Post.findOne({
+                _id: req.body.data.PostID
+            }, function (err, data) {
+                if (err) next(err);
+                else
+                    res.send(data);
+            });
+        }
+    });
+
+});
+router.post('/Thread/Dislike', function (req, res, next) {
+    //console.log(req.body);
+    var inc = 0;
+    if(req.body.data.message == 'Liked')
+        inc = -1;
+    Post.findOneAndUpdate({
+        _id: req.body.data.PostID
+    }, {
+        $inc: {
+            downvote: 1,
+            upvote: inc
+        }
+    }, function (err, post) {
+        if (err) next(err);
+        else {
+            Post.findOne({
+                _id: req.body.data.PostID
+            }, function (err, data) {
+                if (err) next(err);
+                else
+                    res.send(data);
+            });
+        }
+    });
+
+});
+
 module.exports = router;
 
 router.post('/Thread/:Threadname/:postId', function (req, res, next) {
@@ -132,7 +185,7 @@ router.post('/Thread/:Threadname/:postId', function (req, res, next) {
             }, function (err, comment) {
                 if (err) return next(err);
 
-                res.redirect('/Thread/'+req.params.Threadname+'/'+req.params.postId);
+                res.redirect('/Thread/' + req.params.Threadname + '/' + req.params.postId);
             });
         });
     } else {
