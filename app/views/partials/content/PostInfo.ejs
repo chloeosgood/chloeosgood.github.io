@@ -27,16 +27,14 @@
         <div class="col-sm-15 col-md-15 main">
             <div class="Content">
                 <div class="Post">
-                    <div class="Post Left">
+                    <div class="Post Middle">
 
                         <a class='UserTag' href='/User/<%= Post.user.username%>'><img class="Profile" src="https://www.w3schools.com/images/w3schools_green.jpg">
                         </a>
-                        <h5 class="threadtitle">
-                            <%= Post.title%>
-                        </h5>
+                        
                     </div>
 
-                    <div class="Post Middle">
+                    <div class="Post Right">
                         <a class='UserTag' href='/User/<%= Post.user.username%>'>
                             <h5>
                                 <%=Post.user.name.firstname%>
@@ -52,6 +50,21 @@
                             </h5>
                         </a>
                     </div>
+                    
+                    <div class="Post Left">
+                        <h5 class="threadtitle">
+                                <%= Post.thread%>
+                            </h5>
+                    
+                    </div>
+                    
+                    <div class="Post Left">
+                        <h5 class="threadtitle">
+                                <%= Post.title%>
+                            </h5>
+                    
+                    </div>
+                    
                     <div class="Content Body">
                         <p class="postcontent">
                             <%- Post.body%>
@@ -65,8 +78,8 @@
             <div class="PostFooter">
 
 
-                <i2 class="fa fa-heart"></i2>
-                <i2 class="fa fa-trash-o"></i2>
+                <i2 class="fa fa-hand-o-up"></i2>
+                <i2 class="fa fa-hand-o-down"></i2>
                 <i2 id="myBtn" class="fa fa-comment"></i2>
                 <div id="myModal" class="modal">
 
@@ -157,33 +170,34 @@
             </div>
 
             <div class="Spacer">
-                <h5 class="comments">Comments <i class="fa fa-angle-down"></i> </h5>
+                <h5 class="comments">Comments</h5>
 
             </div>
             <% for (let i = 0; i < Comments.length; i++) {%>
             <div class="Comment">
-                <div class="CommentHeader">
-                    <div class="CommentHeader LeftWhite">
+                
+                    
+                        
                         <a href='/user/<%=Comments[i].user.username%>' class='commentUser'>
                             <h4 class="commentUser">
                                 <%=Comments[i].user.username%>
                             </h4>
                         </a>
-                    </div>
+                    
 
 
 
-                    <div class="Comment Body">
+                    
                         <p class="commentparagraph">
                             <%-Comments[i].text%>
                         </p>
                         <div class="PostFooter">
-                            <i class="fa fa-heart"></i>
-                            <i class="fa fa-trash-o"></i>
+                            <i2 class="fa fa-hand-o-up"></i2>
+                            <i2 class="fa fa-hand-o-down"></i2>
 
                         </div>
-                    </div>
-                </div>
+                    
+                
             </div>
             <%}%>
         </div>
