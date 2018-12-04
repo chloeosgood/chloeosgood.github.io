@@ -115,67 +115,179 @@ router.get('/Thread/:Threadname/:postId', function (req, res, next) {
     }
 });
 
-router.post('/Thread/Likes', function (req, res, next) {
-    //console.log(req.body);
-    var dis = 0;
-    var lik = 1;
-    if(req.body.data.message == 'Disliked')
-        dis = -1;
-    if(req.body.data.message == 'Unlike')
-        lik = -1;
-    Post.findOneAndUpdate({
-        _id: req.body.data.PostID
-    }, {
-        $inc: {
-            upvote: lik,
-            downvote: dis
-        }
-    }, function (err, post) {
-        if (err) next(err);
-        else {
-            Post.findOne({
-                _id: req.body.data.PostID
-            }, function (err, data) {
-                if (err) next(err);
-                else
-                    res.send(data);
-            });
-        }
+router.get('/TestVote', function (req, res, next) {
+    res.render('TestVote', {
+        like: true,
+        test: ''
     });
-
-});
-router.post('/Thread/Dislike', function (req, res, next) {
-    //console.log(req.body);
-    var lik = 0;
-    var dis = 1;
-    if(req.body.data.message == 'Liked')
-        lik = -1;
-    else if(req.body.data.message == 'Undislike')
-        dis = -1;
-    console.log(lik + " " + dis + " " + req.body.data.message);
-    Post.findOneAndUpdate({
-        _id: req.body.data.PostID
-    }, {
-        $inc: {
-            downvote: dis,
-            upvote: lik
-        }
-    }, function (err, post) {
-        if (err) next(err);
-        else {
-            Post.findOne({
-                _id: req.body.data.PostID
-            }, function (err, data) {
-                if (err) next(err);
-                else
-                    res.send(data);
-            });
-        }
-    });
-
 });
 
-module.exports = router;
+router.post('/Thread/Vote', function (req, res, next) {
+
+    // data from client
+    // data { instanceID: { post or comment's ID },
+    // instanceType: { 'Post' or 'Comment' },
+    // like: { true, false } }
+
+    // Sample
+    req.session.user = 'bstehling';
+    req.body.data = {
+        instanceID: '5bfcbbd3a7f4e40808fdd8c4',
+        instanceType: 'Post',
+        like: req.body.like
+    };
+
+    if (req.session.user) {
+
+        const Voter = (votedList, cb) => {
+
+            const voteOption = {
+                $inc: {
+                    upvote: 0,
+                    downvote: 0
+                }
+            };
+
+            const processVote = () => {
+
+                // Exist: XNOR, XOR
+                // Not Exist
+                for (let i = 0; i < votedList.length; i++) {
+                    const instance = votedList[i];
+
+                    if (instance.instanceID.equals(req.body.data.instanceID)) {
+
+                        if (instance.like.toString() === req.body.data.like) {
+                            
+                            assignVote(-1, 0);
+
+                            return updateInstance('XNOR');
+                        } else {
+
+                            assignVote(1, -1);
+    
+                            return updateInstance('XOR');
+                        }
+                    }
+                }
+
+                assignVote(1, 0);
+
+                return updateInstance('Not Exist');
+            };
+
+            const assignVote = (up, down) => {
+                voteOption.$inc.upvote = (req.body.data.like === 'true') ? up : down;
+                voteOption.$inc.downvote = (req.body.data.like === 'false') ? up : down;
+
+                // console.log(`Assign Vote: ${voteOption.$inc.upvote}, ${voteOption.$inc.downvote}`);
+            };
+
+            const updateInstance = (VoteMsg) => {
+
+                console.log(`VoteMsg: ${VoteMsg}`);
+
+                const instanceCB = function (err, doc) {
+                    if (err) return next(err);
+
+                    // console.log(`Updated Instance: ${doc}`);
+
+                    cb(VoteMsg, doc);
+                };
+
+                if (req.body.data.instanceType === 'Post') {
+                    updatePost(instanceCB);
+                } else if (req.body.data.instanceType === 'Comment') {
+                    updateComment(instanceCB);
+                }
+            };
+
+            const updatePost = (instanceCB) => {
+                Post.findOneAndUpdate({ _id: req.body.data.instanceID }, voteOption, { new: true},
+                    instanceCB);
+            };
+
+            const updateComment = (instanceCB) => {
+                Comment.findOneAndUpdate({ _id: req.body.data.instanceID }, voteOption, { new: true },
+                    instanceCB);
+            };
+
+            processVote(cb);
+        };
+
+        User.findOne({ username: req.session.user }, function (err, user) {
+            if (err) return next(err);
+
+            if (user) {
+
+                Voter(user.votedList, function (msg, doc) {
+
+                    const updateVotedList = (updateOption, filter = null) => {
+
+                        filter = filter || {
+                            new: true
+                        };
+
+                        User.findOneAndUpdate({ username: req.session.user }, updateOption, filter,
+                        function (err, user) {
+                            if (err) return next(err);
+
+                            console.log(`User Voted: ${user}`);
+
+                            // Sucessed in AJAX
+                            // req.send({
+                            //     msg: 0,
+                            //     err: ''
+                            // });
+                            res.render('TestVote', {
+                                like: req.body.like,
+                                test: user.toString()
+                            });
+                        });
+                    };
+
+                    if (msg === 'XNOR') {
+                        updateVotedList({
+                            $pull: {
+                                votedList: {
+                                    instanceID: doc._id
+                                }
+                            }
+                        });
+                    } else if (msg === 'XOR') {
+                        updateVotedList({
+                            $set: {
+                                'votedList.$[ele].like': req.body.data.like
+                            }
+                        }, {
+                            new: true,
+                            arrayFilters: [ { 'ele.instanceID': doc._id } ]
+                        });
+                    } else if (msg === 'Not Exist') {
+                        updateVotedList({
+                            $push: {
+                                votedList: {
+                                    instanceID: doc._id,
+                                    instanceType: req.body.data.instanceType,
+                                    like: req.body.data.like
+                                }
+                            }
+                        });
+                    }
+                });
+            } else {
+                // #Err: User Not Founds
+                res.send({
+                    msg: 1,
+                    error: 'User Not Founds'
+                });
+            }
+        });
+
+    } else {
+        res.redirect('/login');
+    }
+});
 
 router.post('/Thread/:Threadname/:postId', function (req, res, next) {
     if (req.session.user) {
