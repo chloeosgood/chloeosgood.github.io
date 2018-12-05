@@ -44,7 +44,7 @@ ThreadSchema.statics = {
     },
 
     listByRecentPost: function(cb) {
-        return this.list({ sort: '-recentPost', limit: 6 }, cb);
+        return this.list({ sort: '-recentPost'}, cb);
     },
 
     listByName: function(cb) {

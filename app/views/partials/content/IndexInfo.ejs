@@ -2,63 +2,113 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="row testclass">
     <div class="col-sm-9 col-md-9 main">
+        <div class='text-center'>
+            <ul class='pagination pagination-lg'>
+                <li class='active' id='Page-1'><a>1</a></li>
+                <%for(let x = 2; x <= Math.ceil(Threads.length/4); x++){%>
+                <li id='Page-<%=x%>'><a>
+                        <%=x%></a></li>
+                <%}%>
+            </ul>
+        </div>
         <div class='outer-color'>
-            <% for (let i = 0; i < Threads.length && i < 6; i++) {%>
-            <div class="Thread">
-                <div class="Thread-Info Left">
-                    <a href='/User/<%=Threads[i].recentUser.username%>' class='UserTag'>
-                        <h4>
-                            <%=Threads[i].recentUser.name.firstname%>
-                            <%=Threads[i].recentUser.name.lastname%>
-                        </h4>
-                    </a>
-                    <a href='/User/<%=Threads[i].recentUser.username%>' class='UserTag'><img class="Profile" src="/Users/ProfilePictures/human_avatar.jpg"></a>
-                    <a href='/User/<%=Threads[i].recentUser.username%>' class='UserTag'>
-                        <h4>
-                            <%=Threads[i].recentUser.username%>
-                        </h4>
-                    </a>
-                </div>
-
-                <div class="Thread-Info Middle">
-                    <a href='/Thread/<%=Threads[i].name%>/<%=Threads[i].recentPost._id%>' class='UserTag'>
-                        <h3>
-                            <b>
-                                <%=Threads[i].name%>
-                            </b>
-                        </h3>
-                        <h4>
-                            <i>
-                                <%=Threads[i].recentPost.title%>
-                            </i>
-                        </h4>
-                        <h5 class="PostBody">
-                            <%-Threads[i].recentPost.body%>
-                        </h5>
-                    </a>
-                </div>
-
-                <div class="Thread-Info Right">
-                    <div class="Likes">
-                        <i class="fa fa-hand-o-up"></i>
-                        <h5>
-                            <%=Threads[i].recentPost.upvote%>
-                        </h5>
+            <%for(let y = 1; y <=Math.ceil(Threads.length/4);y++){%>
+            <div class='Page Page-<%=y%>'>
+                <% for (let i = (y-1)*4; i < y*4 && i< Threads.length; i++) {%>
+                <div class="Thread">
+                    <div class="Thread-Info Left">
+                        <a href='/User/<%=Threads[i].recentUser.username%>' class='UserTag'>
+                            <h4>
+                                <%=Threads[i].recentUser.name.firstname%>
+                                <%=Threads[i].recentUser.name.lastname%>
+                            </h4>
+                        </a>
+                        <a href='/User/<%=Threads[i].recentUser.username%>' class='UserTag'><img class="Profile" src="/Users/ProfilePictures/human_avatar.jpg"></a>
+                        <a href='/User/<%=Threads[i].recentUser.username%>' class='UserTag'>
+                            <h4>
+                                <%=Threads[i].recentUser.username%>
+                            </h4>
+                        </a>
                     </div>
-                    <div class='Likes'>
-                        <i class="fa fa-hand-o-down info"></i>
-                        <h5>
-                            <%=Threads[i].recentPost.downvote%>
-                        </h5>
+
+                    <div class="Thread-Info Middle">
+                        <a href='/Thread/<%=Threads[i].name%>/<%=Threads[i].recentPost._id%>' class='UserTag'>
+                            <h3>
+                                <b>
+                                    <%=Threads[i].name%>
+                                </b>
+                            </h3>
+                            <h4>
+                                <i>
+                                    <%=Threads[i].recentPost.title%>
+                                </i>
+                            </h4>
+                            <h5 class="PostBody">
+                                <%-Threads[i].recentPost.body%>
+                            </h5>
+                        </a>
+                    </div>
+
+                    <div class="Thread-Info Right">
+                        <div class="Likes">
+                            <i class="fa fa-hand-o-up"></i>
+                            <h5>
+                                <%=Threads[i].recentPost.upvote%>
+                            </h5>
+                        </div>
+                        <div class='Likes'>
+                            <i class="fa fa-hand-o-down info"></i>
+                            <h5>
+                                <%=Threads[i].recentPost.downvote%>
+                            </h5>
+                        </div>
                     </div>
                 </div>
+                <%}%>
             </div>
+
             <%}%>
         </div>
     </div>
 </div>
 <style>
-    img.Profile{
-        border:2px solid black;
+    img.Profile {
+        border: 2px solid black;
     }
+
+    .Page {
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .pagination {
+        margin: 0;
+        margin-bottom: 15px;
+        margin-top: 10px;
+
+    }
+
 </style>
+<script src="dist/SignUpFiles/vendor/jquery/jquery.min.js"></script>
+<script>
+    var pages = Math.ceil(<%=Threads.length%> / 4);
+    $(document).ready(function() {
+        document.getElementsByClassName('Page-1')[0].classList.add('show');
+    });
+
+    $('li').click(function(event) {
+        var text = $(this).attr("id");
+        console.log(text);
+        var temp = document.getElementById(text);
+        for (let x = 1; x <= pages; x++) {
+            document.getElementById('Page-' + x).classList.remove('active');
+            document.getElementsByClassName('Page-' + x)[0].classList.remove('show');
+        }
+        temp.classList.add('active');
+        document.getElementsByClassName(text)[0].classList.add('show');
+    });
+
+</script>
