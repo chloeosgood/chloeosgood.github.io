@@ -19,7 +19,7 @@ const NameSchema = new mongoose.Schema({
 });
 
 const VoteSchema = new mongoose.Schema({
-  instance: {
+  instanceID: {
     type: mongoose.Schema.Types.ObjectId
   },
   instanceType: {
