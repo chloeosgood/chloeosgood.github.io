@@ -130,12 +130,6 @@ router.post('/Thread/Vote', function (req, res, next) {
     // like: { true, false } }
 
     // Sample
-    req.session.user = 'bstehling';
-    req.body.data = {
-        instanceID: '5bfcbbd3a7f4e40808fdd8c4',
-        instanceType: 'Post',
-        like: req.body.like
-    };
 
     if (req.session.user) {
 
@@ -158,14 +152,14 @@ router.post('/Thread/Vote', function (req, res, next) {
                     if (instance.instanceID.equals(req.body.data.instanceID)) {
 
                         if (instance.like.toString() === req.body.data.like) {
-                            
+
                             assignVote(-1, 0);
 
                             return updateInstance('XNOR');
                         } else {
 
                             assignVote(1, -1);
-    
+
                             return updateInstance('XOR');
                         }
                     }
@@ -185,7 +179,7 @@ router.post('/Thread/Vote', function (req, res, next) {
 
             const updateInstance = (VoteMsg) => {
 
-                console.log(`VoteMsg: ${VoteMsg}`);
+                //console.log(`VoteMsg: ${VoteMsg}`);
 
                 const instanceCB = function (err, doc) {
                     if (err) return next(err);
@@ -203,19 +197,29 @@ router.post('/Thread/Vote', function (req, res, next) {
             };
 
             const updatePost = (instanceCB) => {
-                Post.findOneAndUpdate({ _id: req.body.data.instanceID }, voteOption, { new: true},
+                Post.findOneAndUpdate({
+                        _id: req.body.data.instanceID
+                    }, voteOption, {
+                        new: true
+                    },
                     instanceCB);
             };
 
             const updateComment = (instanceCB) => {
-                Comment.findOneAndUpdate({ _id: req.body.data.instanceID }, voteOption, { new: true },
+                Comment.findOneAndUpdate({
+                        _id: req.body.data.instanceID
+                    }, voteOption, {
+                        new: true
+                    },
                     instanceCB);
             };
 
             processVote(cb);
         };
 
-        User.findOne({ username: req.session.user }, function (err, user) {
+        User.findOne({
+            username: req.session.user
+        }, function (err, user) {
             if (err) return next(err);
 
             if (user) {
@@ -228,22 +232,27 @@ router.post('/Thread/Vote', function (req, res, next) {
                             new: true
                         };
 
-                        User.findOneAndUpdate({ username: req.session.user }, updateOption, filter,
-                        function (err, user) {
-                            if (err) return next(err);
+                        User.findOneAndUpdate({
+                                username: req.session.user
+                            }, updateOption, filter,
+                            function (err, user) {
+                                if (err) return next(err);
 
-                            console.log(`User Voted: ${user}`);
+                                //console.log(`User Voted: ${user}`);
 
-                            // Sucessed in AJAX
-                            // req.send({
-                            //     msg: 0,
-                            //     err: ''
-                            // });
-                            res.render('TestVote', {
-                                like: req.body.like,
-                                test: user.toString()
+                                // Sucessed in AJAX
+                                // req.send({
+                                //     msg: 0,
+                                //     err: ''
+                                // });
+                                Post.findOne({
+                                    _id: req.body.data.instanceID
+                                }, function (err, data) {
+                                    if (err) next(err);
+                                    else
+                                        res.send(data);
+                                });
                             });
-                        });
                     };
 
                     if (msg === 'XNOR') {
@@ -261,7 +270,9 @@ router.post('/Thread/Vote', function (req, res, next) {
                             }
                         }, {
                             new: true,
-                            arrayFilters: [ { 'ele.instanceID': doc._id } ]
+                            arrayFilters: [{
+                                'ele.instanceID': doc._id
+                            }]
                         });
                     } else if (msg === 'Not Exist') {
                         updateVotedList({
@@ -294,7 +305,7 @@ router.post('/Thread/:Threadname/:postId', function (req, res, next) {
         User.findOne({
             username: req.session.user
         }, function (err, user) {
-            console.log(user);
+            //console.log(user);
             if (err) return next(err);
 
             Comment.create({

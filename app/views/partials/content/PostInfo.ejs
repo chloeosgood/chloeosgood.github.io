@@ -229,28 +229,15 @@
     var span = document.getElementsByClassName("close")[0];
 
     var like = document.getElementById("PostLike");
-    var liked = 'False';
-    var disliked = 'False'
     var dislike = document.getElementById("PostDislike");
 
     like.onclick = function() {
         var id = document.getElementById('PostID').innerHTML.trim();
-        var mes = '';
-        if (liked == 'False') {
-            if (disliked == 'True') {
-                mes = 'Disliked';
-            }
-            liked = 'True';
-            disliked = 'False';
-        } else if (liked == 'True') {
-            mes = 'Unlike';
-            liked = 'False';
-            disliked = 'False';
-        }
-        $.post('http://localhost:5656/Thread/Likes', {
+        $.post('http://localhost:5656/Thread/Vote', {
             data: {
-                message: mes,
-                PostID: id
+                like: 'true',
+                instanceID: id,
+                instanceType: 'Post'
             }
         }).done(function(data) {
             like.innerHTML = " " + data.upvote;
@@ -261,26 +248,14 @@
     }
     dislike.onclick = function() {
         var id = document.getElementById('PostID').innerHTML.trim();
-        var mes = '';
-        if (disliked == 'False') {
-
-            if (liked == 'True') {
-                mes = 'Liked';
-            }
-            disliked = 'True';
-            liked = 'False';
-        } else if (disliked == 'True') {
-            mes = 'Undislike';
-            liked = 'False';
-            disliked = 'False';
-        }
-        console.log(mes);
-        $.post('http://localhost:5656/Thread/Dislike', {
+        $.post('http://localhost:5656/Thread/Vote', {
             data: {
-                message: mes,
-                PostID: id
+                like: 'false',
+                instanceID: id,
+                instanceType: 'Post'
             }
         }).done(function(data) {
+            console.log(data);
             dislike.innerHTML = " " + data.downvote;
             like.innerHTML = " " + data.upvote;
         });
