@@ -22,7 +22,6 @@ router.get('/CreatePost', function (req, res) {
     }
 });
 
-
 router.post('/CreatePost', function (req, res, next) {
     //console.log(req.body);
 
