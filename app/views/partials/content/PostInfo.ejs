@@ -174,11 +174,12 @@
                 </div>
             </div>
             <div class="Spacer">
-                <h5 class="comments">Comments</h5>
+                <h5 class="comments">
+                    <%=Comments.length%> Comment(s)<i class="fa fa-chevron-down highlight" aria-hidden="true" id='collapse'></i></h5>
 
             </div>
             <% for (let i = 0; i < Comments.length; i++) {%>
-            <div class="Comment">
+            <div class="Comment Collapseable">
                 <a href='/user/<%=Comments[i].user.username%>' class='commentUser'>
                     <h4 class="commentUser">
                         <%=Comments[i].user.username%>
@@ -188,8 +189,12 @@
                     <%-Comments[i].text%>
                 </p>
                 <div class="PostFooter">
-                    <i2 class="fa fa-hand-o-up"></i2>
-                    <i2 class="fa fa-hand-o-down"></i2>
+                    <i2 class="fa fa-hand-o-up unselectable" id='Like<%=i%>' onclick="commentClicked('<%=Comments[i]._id%>','like',this,'<%=i%>')">
+                        <%=Comments[i].upvote%>
+                    </i2>
+                    <i2 class="fa fa-hand-o-down unselectable" id='Dislike<%=i%>' onclick="commentClicked('<%=Comments[i]._id%>','dislike',this,'<%=i%>')">
+                        <%=Comments[i].downvote%>
+                    </i2>
 
                 </div>
             </div>
@@ -205,6 +210,9 @@
         visibility: hidden;
 
     }
+    .comments:active{
+        color:white;
+    }
     .unselectable {
         -webkit-touch-callout: none;
         -webkit-user-select: none;
@@ -213,8 +221,16 @@
         -ms-user-select: none;
         user-select: none;
     }
-    img.Profile{
-        border:2px solid black;
+
+    img.Profile {
+        border: 2px solid black;
+    }
+
+    .highlight:hover {
+        color: gray;
+    }
+    .highlight:active{
+        color:lightgray;
     }
 
 </style>
@@ -230,6 +246,8 @@
 
     var like = document.getElementById("PostLike");
     var dislike = document.getElementById("PostDislike");
+    var collapse = document.getElementById("collapse");
+    var isCollapsed = 'false';
 
     like.onclick = function() {
         var id = document.getElementById('PostID').innerHTML.trim();
@@ -260,6 +278,50 @@
             like.innerHTML = " " + data.upvote;
         });
 
+    }
+
+    collapse.onclick = function() {
+        var elmts = document.getElementsByClassName('Collapseable');
+        for (var x = 0;x < elmts.length;x++) {
+            if (isCollapsed == 'false') {
+                elmts[x].style.display = 'none';
+            } else {
+                elmts[x].style.display = 'table';
+            }
+        }
+        if (isCollapsed == 'false') {
+            isCollapsed = 'true';
+        }
+        else
+            isCollapsed = 'false';
+
+    }
+
+    function commentClicked(id, option, elmt, num) {
+        if (option == 'like') {
+            $.post('http://localhost:5656/Thread/Vote', {
+                data: {
+                    like: 'true',
+                    instanceID: id,
+                    instanceType: 'Comment'
+                }
+            }).done(function(data) {
+                console.log(data);
+                document.getElementById('Dislike' + num).innerHTML = " " + data.downvote;
+                elmt.innerHTML = " " + data.upvote;
+            });
+        } else if (option == 'dislike') {
+            $.post('http://localhost:5656/Thread/Vote', {
+                data: {
+                    like: 'false',
+                    instanceID: id,
+                    instanceType: 'Comment'
+                }
+            }).done(function(data) {
+                elmt.innerHTML = " " + data.downvote;
+                document.getElementById('Like' + num).innerHTML = " " + data.upvote;
+            });
+        }
     }
 
     // When the user clicks the button, open the modal 

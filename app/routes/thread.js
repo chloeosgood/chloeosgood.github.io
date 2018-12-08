@@ -96,7 +96,6 @@ router.get('/Thread/:Threadname/:postId', function (req, res, next) {
                     .populate('user')
                     .exec(function (err, comments) {
                         if (err) return next(err);
-
                         res.render('Post', {
                             pageTitle: "Post",
                             pageID: "Post Page",
@@ -245,13 +244,24 @@ router.post('/Thread/Vote', function (req, res, next) {
                                 //     msg: 0,
                                 //     err: ''
                                 // });
-                                Post.findOne({
-                                    _id: req.body.data.instanceID
-                                }, function (err, data) {
-                                    if (err) next(err);
-                                    else
-                                        res.send(data);
-                                });
+                                if (req.body.data.instanceType === 'Comment') {
+                                    Comment.findOne({
+                                        _id: req.body.data.instanceID
+                                    }, function (err, data) {
+                                        if (err) next(err);
+                                        else
+                                            res.send(data);
+                                    });
+
+                                } else {
+                                    Post.findOne({
+                                        _id: req.body.data.instanceID
+                                    }, function (err, data) {
+                                        if (err) next(err);
+                                        else
+                                            res.send(data);
+                                    });
+                                }
                             });
                     };
 
