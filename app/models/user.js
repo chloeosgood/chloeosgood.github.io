@@ -61,7 +61,7 @@ const UserSchema = new mongoose.Schema({
     },
     avatar: {
       type: String,
-      default: ''
+      default: 'human_avatar.jpg'
     },
     authority: {
       type: Number,

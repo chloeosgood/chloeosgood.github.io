@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var base64Img = require('base64-img');
+var path = require('path');
 
 const User = require('../models/user.js');
 const Post = require('../models/post.js');
@@ -32,7 +34,8 @@ router.get('/User/:Username', function (req, res, next) {
                     major: user.major,
                     classification: user.classification,
                     Posts: posts,
-                    isSame: isSame
+                    isSame: isSame,
+                    profilepicture: user.avatar
                 });
             });
         });
@@ -44,7 +47,21 @@ router.get('/User/:Username', function (req, res, next) {
 });
 
 router.post('/User/profile', function (req, res, next) {
-    console.log(req.body.data);
+    console.log(req.session.user);
+    var local = path.join(__dirname, '../');
+    console.log(local);
+    base64Img.img(req.body.data.image, local+'/public/Users/ProfilePictures', req.session.user, function(err, filepath, next) {
+        if(err)return next(err);
+        else{
+            User.findOneAndUpdate({
+                username: req.session.user
+            },{
+                avatar: req.session.user+".png"
+            },function(err, User){
+                if(err)return next(err);
+            })
+        }
+    });
     res.send({
         msg: 'hello'
     });

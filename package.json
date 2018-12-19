@@ -1,6 +1,6 @@
 {
     "name": "software2-project",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Software 2 project ",
     "main": "app/app.js",
     "scripts": {
@@ -10,6 +10,7 @@
     "author": "Matthew Hendrick",
     "license": "ISC",
     "dependencies": {
+        "base64-img": "^1.0.4",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.3",
         "bootstrap": "^3.3.7",
